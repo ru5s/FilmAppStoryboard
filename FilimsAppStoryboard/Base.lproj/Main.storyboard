@@ -80,6 +80,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="Vs8-yu-GgT" firstAttribute="leading" secondItem="KXF-jw-kxi" secondAttribute="leading" constant="5" id="5tN-Ll-3XL"/>
                                                 <constraint firstItem="qzc-rs-PvT" firstAttribute="top" secondItem="KXF-jw-kxi" secondAttribute="top" constant="5" id="6RN-AP-vY8"/>

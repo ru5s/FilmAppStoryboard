@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
         collectioView.delegate = self
         collectioView.dataSource = self
         
+//        self.collectioView.register(FilmCollectionViewCell.self, forCellWithReuseIdentifier: "FilmCell")
+        
         searchBar.delegate = self
     }
     
@@ -38,6 +40,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         cell.posterPreviewImageView.image = UIImage(named: testArray[indexPath.row].testPic!)
         cell.posterPreviewImageView.layer.cornerRadius = 5
         cell.filmTitleLabel.text = testArray[indexPath.row].testTitle

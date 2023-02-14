@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B518C414299B572C00A33295 /* FilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518C413299B572C00A33295 /* FilmCollectionViewCell.xib */; };
 		B566177E2992BB1600D24AC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566177D2992BB1600D24AC2 /* AppDelegate.swift */; };
 		B56617802992BB1600D24AC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566177F2992BB1600D24AC2 /* SceneDelegate.swift */; };
 		B56617822992BB1600D24AC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56617812992BB1600D24AC2 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B518C413299B572C00A33295 /* FilmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCollectionViewCell.xib; sourceTree = "<group>"; };
 		B566177A2992BB1600D24AC2 /* FilimsAppStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilimsAppStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B566177D2992BB1600D24AC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B566177F2992BB1600D24AC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				B566178B2992BB1800D24AC2 /* Info.plist */,
 				B56617932992BC5600D24AC2 /* MainViewController.swift */,
 				B58E5305299393F6008E2FB5 /* FilmCollectionViewCell.swift */,
+				B518C413299B572C00A33295 /* FilmCollectionViewCell.xib */,
 				B56617952992BC6900D24AC2 /* FavoriteFilmsViewController.swift */,
 				B56617972992BC7600D24AC2 /* DetailFilmViewController.swift */,
 				B56617992992BC8400D24AC2 /* FilmPicsViewController.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				B566178A2992BB1800D24AC2 /* LaunchScreen.storyboard in Resources */,
 				B56617872992BB1800D24AC2 /* Assets.xcassets in Resources */,
+				B518C414299B572C00A33295 /* FilmCollectionViewCell.xib in Resources */,
 				B56617852992BB1600D24AC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
