@@ -9,27 +9,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmCollectionViewCell" customModule="FilimsAppStoryboard"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmCollectionViewCell" customModule="FilimsAppStoryboard" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilmCell" id="nzL-38-yC2" customClass="FilmCollectionViewCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="195" verticalHuggingPriority="350" reuseIdentifier="FilmCell" id="nzL-38-yC2" customClass="FilmCollectionViewCell" customModule="FilimsAppStoryboard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="195" height="350"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ocx-PH-v2f">
                 <rect key="frame" x="0.0" y="0.0" width="195" height="350"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Название фильма" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZr-9g-YBL">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-0d-iFo">
+                        <rect key="frame" x="0.0" y="0.0" width="195" height="350"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="195" id="3Tl-bT-505"/>
+                            <constraint firstAttribute="height" constant="350" id="cwC-gQ-PPZ"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Название фильма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZr-9g-YBL">
                         <rect key="frame" x="5" y="276" width="185" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-c8-7Fl">
+                    <stackView opaque="NO" contentMode="scaleAspectFit" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-c8-7Fl">
                         <rect key="frame" x="5" y="302" width="185" height="38"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2023" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raa-Qz-gZ4">
-                                <rect key="frame" x="0.0" y="0.0" width="47" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="38"/>
                                 <fontDescription key="fontDescription" name="AndaleMono" family="Andale Mono" pointSize="21"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,24 +73,28 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.65859999999999996" green="0.86300333330000001" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ZlT-c8-7Fl" secondAttribute="trailing" constant="5" id="2bp-tr-Yeq"/>
                     <constraint firstItem="eG0-tN-a6d" firstAttribute="leading" secondItem="Ocx-PH-v2f" secondAttribute="leading" constant="5" id="7JV-sm-5nE"/>
                     <constraint firstItem="eG0-tN-a6d" firstAttribute="top" secondItem="Ocx-PH-v2f" secondAttribute="top" constant="5" id="C7j-i5-3gv"/>
                     <constraint firstAttribute="bottom" secondItem="ZlT-c8-7Fl" secondAttribute="bottom" constant="10" id="LYP-nb-VUX"/>
+                    <constraint firstItem="CyA-0d-iFo" firstAttribute="leading" secondItem="Ocx-PH-v2f" secondAttribute="leading" id="Qj7-dy-Le5"/>
                     <constraint firstItem="ZlT-c8-7Fl" firstAttribute="leading" secondItem="Ocx-PH-v2f" secondAttribute="leading" constant="5" id="X07-Y8-5lM"/>
                     <constraint firstAttribute="trailing" secondItem="eG0-tN-a6d" secondAttribute="trailing" constant="5" id="Yqv-Sc-Cda"/>
+                    <constraint firstAttribute="bottom" secondItem="CyA-0d-iFo" secondAttribute="bottom" id="jgX-jT-FKt"/>
+                    <constraint firstItem="CyA-0d-iFo" firstAttribute="top" secondItem="Ocx-PH-v2f" secondAttribute="top" id="r6Z-nP-LwV"/>
+                    <constraint firstAttribute="trailing" secondItem="CyA-0d-iFo" secondAttribute="trailing" id="sh5-pd-Fj1"/>
                 </constraints>
             </collectionViewCellContentView>
             <connections>
-                <outlet property="filmTitleLabel" destination="LZr-9g-YBL" id="c2p-6f-PZO"/>
-                <outlet property="posterPreviewImageView" destination="eG0-tN-a6d" id="Bkl-Pf-Vew"/>
-                <outlet property="ratingLabel" destination="yTf-Qe-Phk" id="LCq-WS-rUT"/>
-                <outlet property="releaseYearLabel" destination="raa-Qz-gZ4" id="tAq-Ua-QfX"/>
-                <outlet property="viewBelowRating" destination="woa-XM-u6N" id="wuP-oC-MFX"/>
+                <outlet property="filmTitleLabel" destination="LZr-9g-YBL" id="lzz-mj-prq"/>
+                <outlet property="posterPreviewImageView" destination="eG0-tN-a6d" id="nbG-JI-SqM"/>
+                <outlet property="ratingLabel" destination="yTf-Qe-Phk" id="MmS-M0-cu8"/>
+                <outlet property="releaseYearLabel" destination="raa-Qz-gZ4" id="rYs-V9-nL0"/>
+                <outlet property="viewBelowRating" destination="woa-XM-u6N" id="8u3-5w-FuR"/>
             </connections>
-            <point key="canvasLocation" x="175" y="13"/>
+            <point key="canvasLocation" x="174.80916030534351" y="12.67605633802817"/>
         </collectionViewCell>
     </objects>
     <resources>

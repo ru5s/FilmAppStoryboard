@@ -16,15 +16,21 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectioView.delegate = self
         collectioView.dataSource = self
         
-//        self.collectioView.register(FilmCollectionViewCell.self, forCellWithReuseIdentifier: "FilmCell")
+        let xibCell = UINib(nibName: "FilmCollectionViewCell", bundle: nil)
         
+        collectioView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
+
         searchBar.delegate = self
+        collectioView.reloadData()
+        
+        
     }
     
 
@@ -50,6 +56,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.viewBelowRating.layer.cornerRadius = 10
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let detailFilmPage = storyboard.instantiateViewController(withIdentifier: "DetailFilm") as? DetailFilmViewController else {
+            print("id not set")
+            return
+        }
+        detailFilmPage.setAllData(array: testArray, index: indexPath)
+        navigationController?.pushViewController(detailFilmPage, animated: true)
+        
     }
     
     
