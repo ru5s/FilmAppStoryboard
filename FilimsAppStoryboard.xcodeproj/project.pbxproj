@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B518C414299B572C00A33295 /* FilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518C413299B572C00A33295 /* FilmCollectionViewCell.xib */; };
 		B566177E2992BB1600D24AC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566177D2992BB1600D24AC2 /* AppDelegate.swift */; };
 		B56617802992BB1600D24AC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566177F2992BB1600D24AC2 /* SceneDelegate.swift */; };
-		B56617822992BB1600D24AC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56617812992BB1600D24AC2 /* ViewController.swift */; };
 		B56617852992BB1600D24AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56617832992BB1600D24AC2 /* Main.storyboard */; };
 		B56617872992BB1800D24AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56617862992BB1800D24AC2 /* Assets.xcassets */; };
 		B566178A2992BB1800D24AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56617882992BB1800D24AC2 /* LaunchScreen.storyboard */; };
@@ -20,17 +18,17 @@
 		B56617982992BC7600D24AC2 /* DetailFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56617972992BC7600D24AC2 /* DetailFilmViewController.swift */; };
 		B566179A2992BC8400D24AC2 /* FilmPicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56617992992BC8400D24AC2 /* FilmPicsViewController.swift */; };
 		B566179C2992BC9200D24AC2 /* FullPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566179B2992BC9200D24AC2 /* FullPicViewController.swift */; };
+		B5684E6529AF413D00DD46D5 /* FilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5684E6429AF413D00DD46D5 /* FilmCollectionViewCell.xib */; };
+		B5684E6729AF41A600DD46D5 /* RoundingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5684E6629AF41A600DD46D5 /* RoundingTransition.swift */; };
 		B573000729A6343600B4793A /* PosterFullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573000629A6343600B4793A /* PosterFullViewController.swift */; };
 		B58E5306299393F6008E2FB5 /* FilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E5305299393F6008E2FB5 /* FilmCollectionViewCell.swift */; };
 		B5CDDF7729A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B518C413299B572C00A33295 /* FilmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCollectionViewCell.xib; sourceTree = "<group>"; };
 		B566177A2992BB1600D24AC2 /* FilimsAppStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilimsAppStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B566177D2992BB1600D24AC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B566177F2992BB1600D24AC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B56617812992BB1600D24AC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B56617842992BB1600D24AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B56617862992BB1800D24AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B56617892992BB1800D24AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +39,8 @@
 		B56617972992BC7600D24AC2 /* DetailFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilmViewController.swift; sourceTree = "<group>"; };
 		B56617992992BC8400D24AC2 /* FilmPicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmPicsViewController.swift; sourceTree = "<group>"; };
 		B566179B2992BC9200D24AC2 /* FullPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPicViewController.swift; sourceTree = "<group>"; };
+		B5684E6429AF413D00DD46D5 /* FilmCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FilmCollectionViewCell.xib; path = ../../../../../../Downloads/FilimsAppStoryboard/FilimsAppStoryboard/FilmCollectionViewCell.xib; sourceTree = "<group>"; };
+		B5684E6629AF41A600DD46D5 /* RoundingTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingTransition.swift; sourceTree = "<group>"; };
 		B573000629A6343600B4793A /* PosterFullViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterFullViewController.swift; sourceTree = "<group>"; };
 		B58E5305299393F6008E2FB5 /* FilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilmCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -76,25 +76,65 @@
 		B566177C2992BB1600D24AC2 /* FilimsAppStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				B566177D2992BB1600D24AC2 /* AppDelegate.swift */,
-				B566177F2992BB1600D24AC2 /* SceneDelegate.swift */,
-				B56617812992BB1600D24AC2 /* ViewController.swift */,
-				B56617832992BB1600D24AC2 /* Main.storyboard */,
-				B56617862992BB1800D24AC2 /* Assets.xcassets */,
-				B56617882992BB1800D24AC2 /* LaunchScreen.storyboard */,
 				B566178B2992BB1800D24AC2 /* Info.plist */,
+				B5684E6129AF409F00DD46D5 /* Model */,
+				B5F2348029AF40000081FC2B /* System */,
+				B5F2347F29AF3FF30081FC2B /* Storyboard */,
+				B5F2347E29AF3FDE0081FC2B /* ViewControllers */,
+			);
+			path = FilimsAppStoryboard;
+			sourceTree = "<group>";
+		};
+		B5684E6129AF409F00DD46D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B56617912992BB3800D24AC2 /* JSONModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5F2347E29AF3FDE0081FC2B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5F2348129AF40140081FC2B /* Components */,
 				B56617932992BC5600D24AC2 /* MainViewController.swift */,
-				B58E5305299393F6008E2FB5 /* FilmCollectionViewCell.swift */,
-				B518C413299B572C00A33295 /* FilmCollectionViewCell.xib */,
 				B56617972992BC7600D24AC2 /* DetailFilmViewController.swift */,
-				B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */,
 				B56617952992BC6900D24AC2 /* FavoriteFilmsViewController.swift */,
 				B56617992992BC8400D24AC2 /* FilmPicsViewController.swift */,
 				B566179B2992BC9200D24AC2 /* FullPicViewController.swift */,
-				B56617912992BB3800D24AC2 /* JSONModel.swift */,
 				B573000629A6343600B4793A /* PosterFullViewController.swift */,
 			);
-			path = FilimsAppStoryboard;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B5F2347F29AF3FF30081FC2B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B56617832992BB1600D24AC2 /* Main.storyboard */,
+				B56617882992BB1800D24AC2 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B5F2348029AF40000081FC2B /* System */ = {
+			isa = PBXGroup;
+			children = (
+				B566177D2992BB1600D24AC2 /* AppDelegate.swift */,
+				B566177F2992BB1600D24AC2 /* SceneDelegate.swift */,
+				B56617862992BB1800D24AC2 /* Assets.xcassets */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		B5F2348129AF40140081FC2B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */,
+				B58E5305299393F6008E2FB5 /* FilmCollectionViewCell.swift */,
+				B5684E6429AF413D00DD46D5 /* FilmCollectionViewCell.xib */,
+				B5684E6629AF41A600DD46D5 /* RoundingTransition.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +197,7 @@
 			files = (
 				B566178A2992BB1800D24AC2 /* LaunchScreen.storyboard in Resources */,
 				B56617872992BB1800D24AC2 /* Assets.xcassets in Resources */,
-				B518C414299B572C00A33295 /* FilmCollectionViewCell.xib in Resources */,
+				B5684E6529AF413D00DD46D5 /* FilmCollectionViewCell.xib in Resources */,
 				B56617852992BB1600D24AC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,10 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B573000729A6343600B4793A /* PosterFullViewController.swift in Sources */,
-				B56617822992BB1600D24AC2 /* ViewController.swift in Sources */,
 				B56617982992BC7600D24AC2 /* DetailFilmViewController.swift in Sources */,
 				B56617922992BB3800D24AC2 /* JSONModel.swift in Sources */,
 				B566179C2992BC9200D24AC2 /* FullPicViewController.swift in Sources */,
+				B5684E6729AF41A600DD46D5 /* RoundingTransition.swift in Sources */,
 				B5CDDF7729A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift in Sources */,
 				B56617962992BC6900D24AC2 /* FavoriteFilmsViewController.swift in Sources */,
 				B566177E2992BB1600D24AC2 /* AppDelegate.swift in Sources */,

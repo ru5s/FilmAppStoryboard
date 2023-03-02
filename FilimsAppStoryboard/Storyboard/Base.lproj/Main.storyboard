@@ -242,7 +242,7 @@
                 <tapGestureRecognizer numberOfTapsRequired="2" id="ZfD-4v-0TJ">
                     <connections>
                         <action selector="tapGestureAction:" destination="car-Bs-c28" id="5KH-sS-MUW"/>
-                        <segue destination="bcZ-sP-im1" kind="presentation" id="FGu-dW-uaE"/>
+                        <segue destination="bcZ-sP-im1" kind="presentation" identifier="DoubleTapFullPictures" id="FGu-dW-uaE"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -274,17 +274,19 @@
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sOS-A6-kaO">
                                 <rect key="frame" x="0.0" y="106" width="414" height="732"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAA-u7-LHj">
                                 <rect key="frame" x="364" y="68" width="30" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
-                                    <action selector="closeBtnTapped:" destination="bcZ-sP-im1" eventType="touchUpInside" id="GUc-ns-Oha"/>
+                                    <action selector="closeBtnTapped:" destination="bcZ-sP-im1" eventType="touchUpInside" id="vv5-SP-Cgf"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VEQ-ZS-gqW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VEQ-ZS-gqW" firstAttribute="bottom" secondItem="sOS-A6-kaO" secondAttribute="bottom" id="0Fe-Qz-9cJ"/>
                             <constraint firstItem="VEQ-ZS-gqW" firstAttribute="top" secondItem="aAA-u7-LHj" secondAttribute="top" constant="-20" id="5rv-Fd-Sil"/>
@@ -345,6 +347,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -66,7 +66,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("id not set")
             return
         }
-        detailFilmPage.setAllData(array: testArray, index: indexPath)
+        detailFilmPage.generalImageIndex = indexPath.row
+        detailFilmPage.recievedIndex = indexPath.row
         navigationController?.pushViewController(detailFilmPage, animated: true)
         
     }
