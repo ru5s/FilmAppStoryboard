@@ -9,6 +9,8 @@ import UIKit
 
 class DetailFilmViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
+    @IBOutlet weak var isLikeIcon: UIImageView!
+    
     @IBOutlet weak var filmPoster: UIImageView!
     
     @IBOutlet weak var filmTitleLabel: UILabel!
@@ -28,17 +30,32 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     var generalImageIndex: Int = Int()
     var local: Bool = false
     
+    var delegate: DetailFilmVCDelegate?
+    
     var arrayImage: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6"), ]
     
     var transition: RoundingTransition = RoundingTransition()
     
+    let model = Model()
+    
+    var choosedItem: Item?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filmTitleLabel.text = testArray[recievedIndex].testTitle
-        releaseYearLabel.text = "Release: \(String(describing: testArray[recievedIndex].testYear))"
-        ratingLabel.text = "Rating \(String(describing: testArray[recievedIndex].testRating))"
-        filmPoster.image = UIImage(named: testArray[recievedIndex].testPic ?? "2")
+        isLikeIcon.layer.opacity = 0.75
+        
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(toggleLike))
+        isLikeIcon.isUserInteractionEnabled = true
+        isLikeIcon.addGestureRecognizer(tap)
+        
+        filmTitleLabel.text = choosedItem?.testTitle
+        releaseYearLabel.text = "Release: \(String(choosedItem?.testYear ?? 0))"
+        ratingLabel.text = "Rating \(String(choosedItem?.testRating ?? 0))"
+        filmPoster.image = UIImage(named: choosedItem?.testPic ?? "2")
+        
+        choosedItem?.isLiked ?? false ? (isLikeIcon.tintColor = .red) : (isLikeIcon.tintColor = .gray)
         
         framesMovieCollectionView.delegate = self
         framesMovieCollectionView.dataSource = self
@@ -46,6 +63,16 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         framesMovieCollectionView.reloadData()
         storyboardTapGesture.name = posterString
         storyboardTapGesture.addTarget(self, action: #selector(tapGestureAction(_ :)))
+    }
+    
+    @objc func toggleLike() {
+        delegate?.updateData()
+        choosedItem?.isLiked.toggle()
+        choosedItem?.isLiked ?? false ? (isLikeIcon.tintColor = .red) : (isLikeIcon.tintColor = .gray)
+    }
+    
+    func getData(item: Item) {
+        choosedItem = item
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -57,7 +84,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transition.transitionProfile = .cancel
+        transition.transitionProfile = .cancel
         transition.time = 1.0
         transition.start = filmPoster.center
         transition.roundColor = UIColor.black
@@ -78,7 +105,8 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destVC = segue.destination as? PosterFullViewController else {return}
         
-        local ? (destVC.detailedIndexPath = recievedIndex) : (destVC.detailedIndexPath = generalImageIndex)
+        local ? (destVC.detailedIndexPath = recievedIndex) : (destVC.detailedIndexPath = choosedItem?.id ?? 0)
+        local = false
         
         destVC.transitioningDelegate = self
         destVC.modalPresentationStyle = .custom
@@ -100,6 +128,7 @@ extension DetailFilmViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         local = true
         recievedIndex = indexPath.row
         self.performSegue(withIdentifier: "DoubleTapFullPictures", sender: Any?.self)

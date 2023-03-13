@@ -13,17 +13,13 @@
         <!--Films app-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="FilimsAppStoryboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC" id="BYZ-38-t0r" customClass="MainViewController" customModule="FilimsAppStoryboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-M1-4TV">
-                                <rect key="frame" x="0.0" y="92" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-fM-0y5">
-                                <rect key="frame" x="5" y="148" width="404" height="714"/>
+                                <rect key="frame" x="5" y="92" width="404" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TXc-I0-d1J">
                                     <size key="itemSize" width="195" height="350"/>
@@ -48,37 +44,77 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mQw-fM-0y5" secondAttribute="bottom" id="4Ch-jM-FgV"/>
-                            <constraint firstItem="Tge-M1-4TV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AZc-zL-C6k"/>
-                            <constraint firstItem="mQw-fM-0y5" firstAttribute="top" secondItem="Tge-M1-4TV" secondAttribute="bottom" id="GtY-K8-Lcm"/>
                             <constraint firstItem="mQw-fM-0y5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="QF3-dw-dba"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mQw-fM-0y5" secondAttribute="trailing" constant="5" id="QVW-F4-hoT"/>
                             <constraint firstItem="mQw-fM-0y5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RpY-kp-2kE"/>
-                            <constraint firstItem="Tge-M1-4TV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="X9Q-2w-PMP"/>
-                            <constraint firstItem="Tge-M1-4TV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p0P-4Q-gug"/>
+                            <constraint firstItem="mQw-fM-0y5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TQF-lc-U7T"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Films app" id="TZn-zt-Vue"/>
+                    <navigationItem key="navigationItem" title="Films app" id="TZn-zt-Vue">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="heart.fill" catalog="system" id="fI5-pQ-dKa">
+                            <connections>
+                                <action selector="favoritBtnTapped:" destination="BYZ-38-t0r" id="HNl-Pj-N3Q"/>
+                                <segue destination="SC9-fM-8zY" kind="push" identifier="likeData" id="2XQ-hP-lRi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.up" catalog="system" id="uS6-Jl-fW6">
+                            <connections>
+                                <action selector="sortBtnAction:" destination="BYZ-38-t0r" id="XUc-2E-XUI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectioView" destination="mQw-fM-0y5" id="UfE-cb-fAT"/>
-                        <outlet property="searchBar" destination="Tge-M1-4TV" id="Vi1-zt-ZgL"/>
-                        <segue destination="car-Bs-c28" kind="push" identifier="" id="x07-qg-Y1a"/>
+                        <outlet property="sortBtn" destination="uS6-Jl-fW6" id="U6F-gr-HHO"/>
+                        <segue destination="car-Bs-c28" kind="push" identifier="DetailFilmSegue" id="x07-qg-Y1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1011.5942028985507" y="3.3482142857142856"/>
         </scene>
-        <!--Favorite Films View Controller-->
+        <!--Любимые фильмы-->
         <scene sceneID="9om-vC-AGc">
             <objects>
-                <viewController id="SC9-fM-8zY" customClass="FavoriteFilmsViewController" customModule="FilimsAppStoryboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="likedFilmsVS" id="SC9-fM-8zY" customClass="FavoriteFilmsViewController" customModule="FilimsAppStoryboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fme-dz-hx1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EdJ-Oj-Lj1">
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8dI-pE-TOH">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="b48-Eo-Td7">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RtF-s2-XMD" customClass="FavoriteCollectionViewCell" customModule="FilimsAppStoryboard" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Gfp-Tc-Omk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gfp-Tc-Omk" firstAttribute="trailing" secondItem="EdJ-Oj-Lj1" secondAttribute="trailing" id="Fma-If-HDI"/>
+                            <constraint firstItem="EdJ-Oj-Lj1" firstAttribute="top" secondItem="Gfp-Tc-Omk" secondAttribute="top" id="KPG-Js-fGa"/>
+                            <constraint firstItem="EdJ-Oj-Lj1" firstAttribute="leading" secondItem="Gfp-Tc-Omk" secondAttribute="leading" id="g5l-sK-q7L"/>
+                            <constraint firstItem="Gfp-Tc-Omk" firstAttribute="bottom" secondItem="EdJ-Oj-Lj1" secondAttribute="bottom" id="h7u-La-8fD"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Любимые фильмы" id="YQZ-0u-2ES"/>
+                    <connections>
+                        <outlet property="collectionView" destination="EdJ-Oj-Lj1" id="A7P-m1-PI2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GI-3X-fBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,6 +138,13 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ZfD-4v-0TJ" appends="YES" id="3Ac-Lc-eWR"/>
                                 </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Iku-bW-RfS">
+                                <rect key="frame" x="334" y="143.5" width="50" height="47.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4rI-ja-a6l"/>
+                                    <constraint firstAttribute="height" constant="50" id="VD1-VG-w05"/>
+                                </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-Nt-51F">
                                 <rect key="frame" x="20" y="507" width="374" height="128"/>
@@ -207,6 +250,7 @@
                         <constraints>
                             <constraint firstItem="l5Z-Nt-51F" firstAttribute="leading" secondItem="X9C-fR-UBn" secondAttribute="leading" constant="20" id="0Ea-Cc-9Ji"/>
                             <constraint firstItem="xo5-se-xXo" firstAttribute="leading" secondItem="X9C-fR-UBn" secondAttribute="leading" constant="20" id="39q-Ne-EkD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iku-bW-RfS" secondAttribute="trailing" constant="10" id="77h-iE-f30"/>
                             <constraint firstItem="tkw-pS-fng" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X9C-fR-UBn" secondAttribute="leading" id="7EY-Ly-V90"/>
                             <constraint firstItem="Q4h-Je-4lT" firstAttribute="top" secondItem="X9C-fR-UBn" secondAttribute="top" constant="45" id="7Or-0f-DQg"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="xo5-se-xXo" secondAttribute="trailing" constant="20" id="9fu-6v-a0g"/>
@@ -223,6 +267,7 @@
                             <constraint firstItem="F8U-m9-zG5" firstAttribute="top" secondItem="tkw-pS-fng" secondAttribute="bottom" constant="10" id="qmu-px-0DP"/>
                             <constraint firstItem="F8U-m9-zG5" firstAttribute="bottom" secondItem="X9C-fR-UBn" secondAttribute="bottom" id="sqi-zy-0zl"/>
                             <constraint firstItem="xo5-se-xXo" firstAttribute="top" secondItem="X9C-fR-UBn" secondAttribute="top" constant="287" id="veU-5N-Ofy"/>
+                            <constraint firstItem="Iku-bW-RfS" firstAttribute="top" secondItem="GfR-tr-3NL" secondAttribute="topMargin" constant="50" id="wqJ-jT-5iB"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="F8U-m9-zG5" secondAttribute="trailing" constant="20" id="yqp-Fo-kpD"/>
                         </constraints>
                     </view>
@@ -232,6 +277,7 @@
                         <outlet property="filmPoster" destination="Q4h-Je-4lT" id="CNs-4v-Kcj"/>
                         <outlet property="filmTitleLabel" destination="0uf-md-4M5" id="xXa-UV-YWk"/>
                         <outlet property="framesMovieCollectionView" destination="l5Z-Nt-51F" id="Wbp-pw-8sK"/>
+                        <outlet property="isLikeIcon" destination="Iku-bW-RfS" id="A3s-X9-7rE"/>
                         <outlet property="ratingLabel" destination="UIX-zp-hZz" id="ORk-5o-RAj"/>
                         <outlet property="releaseYearLabel" destination="nvc-xS-bUe" id="V2w-AV-hOn"/>
                         <outlet property="storyboardTapGesture" destination="ZfD-4v-0TJ" id="UV0-qi-cwo"/>
@@ -342,6 +388,8 @@
     <resources>
         <image name="5" width="312" height="450"/>
         <image name="6" width="782" height="1200"/>
+        <image name="arrow.up" catalog="system" width="118" height="128"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

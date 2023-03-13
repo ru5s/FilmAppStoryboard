@@ -18,7 +18,7 @@ class PosterFullViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        posterFullView.image = UIImage(named: testArray[detailedIndexPath].testPic ?? "2")
+        posterFullView.image = UIImage(named: Model().testArray[detailedIndexPath].testPic ?? "2")
         closeBtn.layer.cornerRadius = closeBtn.frame.height / 2
     }
     
