@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol MainVCDelegate {
     func removeFromFavorite(id: Int)
 }
 
 protocol DetailFilmVCDelegate {
-    func toggleLike(id: Int)
+    func updateData()
+}
+
+protocol FavoriteVCDelegate {
     func updateData()
 }
 
@@ -34,7 +38,25 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        model.newTestArray = model.testArray
+        // Realm
+        let realm = try? Realm()
+//        let filmObject = FilmObject()
+        
+//        model.readRealmData()
+        print("films is \(model.filmObjects?.count ?? 0)")
+        /* Only for first add data and open mongoDB
+        do {
+            try realm?.write({
+                realm?.add(filmObject)
+            })
+        } catch {
+            print("\(error.localizedDescription)")
+        }
+         */
+//        print(realm?.configuration.fileURL)
+        // end
+        
+//        model.newTestArray = model.testArray
         model.ratingSort()
         
         collectioView.delegate = self
@@ -72,8 +94,10 @@ extension MainViewController: MainVCDelegate {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return model.newTestArray.count
+        guard let filmObjectsCount = model.arrayHelper?.count else {
+            return Int()
+        }
+        return filmObjectsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,12 +110,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.viewBelowRating.layer.cornerRadius = 10
         cell.likeImage.layer.opacity = 0.75
         
-        cell.data = self.model.newTestArray[indexPath.item]
+        cell.data = self.model.arrayHelper?[indexPath.item]
         
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(tapOnLikeImage))
         cell.likeImage.isUserInteractionEnabled = true
-        cell.likeImage.tag = indexPath.row
+        cell.likeImage.tag = model.arrayHelper?[indexPath.row].id ?? 0
         cell.likeImage.addGestureRecognizer(tap)
         
         return cell
@@ -104,29 +128,31 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        detailedFilmIndex = indexPath.row
+        detailedFilmIndex = model.arrayHelper?[indexPath.row].id
+        
         performSegue(withIdentifier: "DetailFilmSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "likeData" {
             model.showLikedItems()
-            
             let favVC = segue.destination as! FavoriteFilmsViewController
-            favVC.showItem(sender: model.likedArrayItem)
             favVC.delegate = self
+            
         }
 
         if segue.identifier == "DetailFilmSegue" {
             let detailVC = segue.destination as! DetailFilmViewController
-            detailVC.getData(item: model.testArray[detailedFilmIndex ?? 0])
+
+            model.detailFilm(id: detailedFilmIndex ?? 0)
+            detailVC.getData(item: detailedFilmIndex ?? 0)
             detailVC.delegate = self
         }
     }
     
 }
 
-extension MainViewController: DetailFilmVCDelegate {
+extension MainViewController: DetailFilmVCDelegate, FavoriteVCDelegate {
     func toggleLike(id: Int) {
         model.toggleLike(index: id)
         
@@ -138,7 +164,29 @@ extension MainViewController: DetailFilmVCDelegate {
     }
 }
 
-
 extension MainViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        model.arrayHelper = model.filmObjects
+        model.search(searchTextValue: searchText)
+        
+        if searchText.isEmpty {
+            model.arrayHelper = model.filmObjects
+            model.ratingSort()
+        }
+        
+        collectioView.reloadData()
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        model.arrayHelper = model.filmObjects
+        
+        if searchBar.text?.count == 0 {
+            model.arrayHelper = model.filmObjects
+            model.ratingSort()
+        }
+        
+        model.ratingSort()
+        
+        collectioView.reloadData()
+    }
 }

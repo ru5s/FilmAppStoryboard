@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailFilmViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
@@ -38,7 +39,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     let model = Model()
     
-    var choosedItem: Item?
+    var choosedItem: FilmObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +52,9 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         isLikeIcon.addGestureRecognizer(tap)
         
         filmTitleLabel.text = choosedItem?.testTitle
-        releaseYearLabel.text = "Release: \(String(choosedItem?.testYear ?? 0))"
+        releaseYearLabel.text = "Release: \(String(choosedItem?.testYear ?? "0"))"
         ratingLabel.text = "Rating \(String(choosedItem?.testRating ?? 0))"
-        filmPoster.image = UIImage(named: choosedItem?.testPic ?? "2")
+        filmPoster.image = UIImage(named: choosedItem?.testPic ?? "1")
         
         choosedItem?.isLiked ?? false ? (isLikeIcon.tintColor = .red) : (isLikeIcon.tintColor = .gray)
         
@@ -66,13 +67,17 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @objc func toggleLike() {
-        delegate?.updateData()
-        choosedItem?.isLiked.toggle()
+        model.toggleLike(index: choosedItem?.id ?? Int())
         choosedItem?.isLiked ?? false ? (isLikeIcon.tintColor = .red) : (isLikeIcon.tintColor = .gray)
+        delegate?.updateData()
     }
     
-    func getData(item: Item) {
-        choosedItem = item
+    func getData(item: Int) {
+        
+        choosedItem = model.filmObjects?.where({ film in
+            film.id == item
+        }).first
+        
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -28,7 +29,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="aPN-CJ-OcK" userLabel="Default Cell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilmApp" id="aPN-CJ-OcK" userLabel="Default Cell" customClass="MainFilmCollectionViewCell" customModule="FilimsAppStoryboard" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="195" height="350"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KXF-jw-kxi">
@@ -54,7 +55,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="heart.fill" catalog="system" id="fI5-pQ-dKa">
                             <connections>
                                 <action selector="favoritBtnTapped:" destination="BYZ-38-t0r" id="HNl-Pj-N3Q"/>
-                                <segue destination="SC9-fM-8zY" kind="push" identifier="likeData" id="2XQ-hP-lRi"/>
+                                <segue destination="SC9-fM-8zY" kind="show" identifier="likeData" id="2XQ-hP-lRi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.up" catalog="system" id="uS6-Jl-fW6">
@@ -66,7 +67,7 @@
                     <connections>
                         <outlet property="collectioView" destination="mQw-fM-0y5" id="UfE-cb-fAT"/>
                         <outlet property="sortBtn" destination="uS6-Jl-fW6" id="U6F-gr-HHO"/>
-                        <segue destination="car-Bs-c28" kind="push" identifier="DetailFilmSegue" id="x07-qg-Y1a"/>
+                        <segue destination="car-Bs-c28" kind="show" identifier="DetailFilmSegue" id="x07-qg-Y1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -91,7 +92,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="b48-Eo-Td7">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteFilm" id="b48-Eo-Td7" customClass="FavoriteCollectionViewCell" customModule="FilimsAppStoryboard" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RtF-s2-XMD" customClass="FavoriteCollectionViewCell" customModule="FilimsAppStoryboard" customModuleProvider="target">
@@ -114,6 +115,7 @@
                     <navigationItem key="navigationItem" title="Любимые фильмы" id="YQZ-0u-2ES"/>
                     <connections>
                         <outlet property="collectionView" destination="EdJ-Oj-Lj1" id="A7P-m1-PI2"/>
+                        <segue destination="car-Bs-c28" kind="show" identifier="showDetailFromFavotite" id="9cb-7D-EkU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GI-3X-fBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -147,7 +149,7 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-Nt-51F">
-                                <rect key="frame" x="20" y="507" width="374" height="128"/>
+                                <rect key="frame" x="20" y="507" width="364" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Ys8-lU-Mln"/>
@@ -244,6 +246,20 @@
                                     <constraint firstAttribute="bottom" secondItem="UIX-zp-hZz" secondAttribute="bottom" constant="7" id="zxQ-ms-1pR"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gb0-an-KSw">
+                                <rect key="frame" x="384" y="507" width="30" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="UaW-Ox-ttW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray">
+                                    <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large"/>
+                                    <attributedString key="attributedTitle"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="ALJ-oz-8h0" kind="show" id="IOS-1F-ii5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X9C-fR-UBn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -255,10 +271,13 @@
                             <constraint firstItem="Q4h-Je-4lT" firstAttribute="top" secondItem="X9C-fR-UBn" secondAttribute="top" constant="45" id="7Or-0f-DQg"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="xo5-se-xXo" secondAttribute="trailing" constant="20" id="9fu-6v-a0g"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="U2w-nR-VBJ" secondAttribute="trailing" constant="225" id="OwQ-Xl-NaD"/>
+                            <constraint firstItem="Gb0-an-KSw" firstAttribute="leading" secondItem="l5Z-Nt-51F" secondAttribute="trailing" id="PCc-8H-YJ6"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="tkw-pS-fng" secondAttribute="trailing" constant="297" id="SQ5-Jd-XOo"/>
                             <constraint firstItem="U2w-nR-VBJ" firstAttribute="top" secondItem="Q4h-Je-4lT" secondAttribute="bottom" constant="14" id="SsI-qN-dXm"/>
                             <constraint firstItem="tkw-pS-fng" firstAttribute="top" secondItem="l5Z-Nt-51F" secondAttribute="bottom" constant="16" id="UfX-np-oIb"/>
-                            <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="l5Z-Nt-51F" secondAttribute="trailing" constant="20" id="gjj-FH-nhD"/>
+                            <constraint firstItem="Gb0-an-KSw" firstAttribute="top" secondItem="Q4h-Je-4lT" secondAttribute="bottom" constant="56" id="asL-iM-Xig"/>
+                            <constraint firstItem="Gb0-an-KSw" firstAttribute="trailing" secondItem="X9C-fR-UBn" secondAttribute="trailing" id="fT3-Tq-aRN"/>
+                            <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="l5Z-Nt-51F" secondAttribute="trailing" constant="30" id="gjj-FH-nhD"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="Q4h-Je-4lT" secondAttribute="trailing" constant="20" id="ibr-Zw-mFo"/>
                             <constraint firstItem="l5Z-Nt-51F" firstAttribute="top" secondItem="U2w-nR-VBJ" secondAttribute="bottom" constant="16" id="ijh-Bh-IER"/>
                             <constraint firstItem="F8U-m9-zG5" firstAttribute="leading" secondItem="X9C-fR-UBn" secondAttribute="leading" constant="20" id="jBK-zl-5K3"/>
@@ -281,7 +300,6 @@
                         <outlet property="ratingLabel" destination="UIX-zp-hZz" id="ORk-5o-RAj"/>
                         <outlet property="releaseYearLabel" destination="nvc-xS-bUe" id="V2w-AV-hOn"/>
                         <outlet property="storyboardTapGesture" destination="ZfD-4v-0TJ" id="UV0-qi-cwo"/>
-                        <segue destination="ALJ-oz-8h0" kind="show" id="awO-HL-R8L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-lm-8CG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -301,8 +319,46 @@
                     <view key="view" contentMode="scaleToFill" id="J6L-Dp-aao">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oe6-6T-Lsh">
+                                <rect key="frame" x="0.0" y="92" width="414" height="711"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d9D-Mb-KGb">
+                                    <size key="itemSize" width="366" height="707"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilmPicsSegue" id="gtD-L0-WBR">
+                                        <rect key="frame" x="0.0" y="2" width="366" height="707"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Kb2-fU-ggM">
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="707"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="366" height="707"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akf-cA-l4p">
+                                <rect key="frame" x="189" y="811" width="36" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qdW-Id-FNR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qdW-Id-FNR" firstAttribute="bottom" secondItem="Akf-cA-l4p" secondAttribute="bottom" constant="19" id="1rE-M6-4zi"/>
+                            <constraint firstItem="Oe6-6T-Lsh" firstAttribute="centerX" secondItem="J6L-Dp-aao" secondAttribute="centerX" id="Fqe-5x-Dqj"/>
+                            <constraint firstItem="Akf-cA-l4p" firstAttribute="centerX" secondItem="J6L-Dp-aao" secondAttribute="centerX" id="G5W-fc-Phd"/>
+                            <constraint firstItem="Oe6-6T-Lsh" firstAttribute="top" secondItem="qdW-Id-FNR" secondAttribute="top" id="NYd-6V-zSt"/>
+                            <constraint firstItem="Oe6-6T-Lsh" firstAttribute="leading" secondItem="qdW-Id-FNR" secondAttribute="leading" id="dc5-gn-A62"/>
+                            <constraint firstItem="Oe6-6T-Lsh" firstAttribute="trailing" secondItem="qdW-Id-FNR" secondAttribute="trailing" id="t9I-hf-jdx"/>
+                            <constraint firstItem="Akf-cA-l4p" firstAttribute="top" secondItem="Oe6-6T-Lsh" secondAttribute="bottom" constant="8" symbolic="YES" id="y5R-tp-RmO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GSZ-lp-CeX"/>
                 </viewController>
@@ -385,10 +441,14 @@
             <point key="canvasLocation" x="101.44927536231884" y="3.3482142857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9cb-7D-EkU"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="5" width="312" height="450"/>
         <image name="6" width="782" height="1200"/>
         <image name="arrow.up" catalog="system" width="118" height="128"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,7 +9,7 @@ import UIKit
 
 class FavoriteCollectionViewCell: UICollectionViewCell {
     
-    var data: Item? {
+    var data: FilmObject? {
         didSet {
             guard data != nil else {
                 return
@@ -17,7 +17,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
             
             favoriteImage.image = UIImage(named: data?.testPic ?? "1")
             favoriteTitle.text = data?.testTitle
-            favoriteYearRelease.text = String(data?.testYear ?? 0)
+            favoriteYearRelease.text = data?.testYear ?? "0"
             favoriteRating.text = String(data?.testRating ?? 0)
             
             data?.isLiked ?? false ? (likeImage.tintColor = .red) : (likeImage.tintColor = .gray)

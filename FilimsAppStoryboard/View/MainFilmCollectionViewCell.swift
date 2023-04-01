@@ -9,7 +9,7 @@ import UIKit
 
 class MainFilmCollectionViewCell: UICollectionViewCell {
     
-    var data: Item? {
+    var data: FilmObject? {
         didSet {
             
             guard data != nil else {
@@ -18,7 +18,7 @@ class MainFilmCollectionViewCell: UICollectionViewCell {
             
             posterPreviewImageView.image = UIImage(named: data?.testPic ?? "1")
             filmTitleLabel.text = data?.testTitle
-            releaseYearLabel.text = String(data?.testYear ?? 0)
+            releaseYearLabel.text = data?.testYear ?? ""
             ratingLabel.text = String(data?.testRating ?? 0)
             data?.isLiked ?? false ? (likeImage.tintColor = .red) : (likeImage.tintColor = .gray)
             

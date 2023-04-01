@@ -12,14 +12,15 @@ class FavoriteFilmsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var likedArray: [Item] = []
+    let model = Model()
     
-    var delegate: MainVCDelegate = MainViewController()
-    
-    var likedId: Int?
+    var detailedFilmIndex: Int = 0
+    var delegate: FavoriteVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        model.showLikedItems()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -31,20 +32,13 @@ class FavoriteFilmsViewController: UIViewController {
         
     }
     
-    
-    func showItem(sender: [Item]){
-        likedArray = sender
-    }
-    
 }
 
 extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard likedArray.count < 0 else {
-            return likedArray.count
-        }
-        return 0
+        
+        return model.likedArrayItem?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,28 +55,36 @@ extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionVie
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(tapOnLikeImage))
         cell.likeImage.isUserInteractionEnabled = true
-        cell.likeImage.tag = indexPath.row
+        cell.likeImage.tag = model.likedArrayItem?[indexPath.row].id ?? 0
         cell.likeImage.addGestureRecognizer(tap)
         
-        guard likedArray.count < 0 else {
-            
-            cell.data = likedArray[indexPath.item]
-            
-            return cell
-        }
+        cell.data = model.likedArrayItem?[indexPath.item]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        detailedFilmIndex = indexPath.row
+        
+        performSegue(withIdentifier: "showDetailFromFavotite", sender: nil)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "showDetailFromFavotite" {
+            let detailVC = segue.destination as! DetailFilmViewController
+            detailVC.getData(item: model.filmObjects?[detailedFilmIndex].id ?? 0)
+            detailVC.delegate = self
+        }
     }
     
     @objc func tapOnLikeImage(sender: UITapGestureRecognizer){
         let index = sender.view?.tag
         
-        likedId = likedArray[index ?? 0].id
-        
-        delegate.removeFromFavorite(id: likedId ?? 0)
-        
-        likedArray.remove(at: index ?? 0)
-        
+        model.removeFromFavorite(id: index ?? 0)
+        delegate?.updateData()
         collectionView.reloadData()
     }
     
@@ -90,3 +92,11 @@ extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionVie
     
 }
 
+extension FavoriteFilmsViewController: DetailFilmVCDelegate {
+    
+    func updateData() {
+        collectionView.reloadData()
+    }
+    
+    
+}

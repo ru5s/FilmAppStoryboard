@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import RealmSwift
 
 
 class Item {
@@ -29,6 +29,12 @@ class Item {
 }
 
 class Model {
+    
+    let realm = try? Realm()
+    var filmObjects: Results<FilmObject>? {
+        return realm?.objects(FilmObject.self)
+    }
+    
     var testArray: [Item] = [
         .init(id: 0, testPic: "1", testTitle: "Доктор сон", testYear: 2000, testRating: 7.8, isLiked: false),
         .init(id: 1, testPic: "2", testTitle: "1408", testYear: 1987, testRating: 9.0, isLiked: false),
@@ -48,37 +54,100 @@ class Model {
     ]
     
     var newTestArray: [Item] = []
+    var arrayHelper: Results<FilmObject>?
     
     var sortAscending: Bool = false
     
-    var likedArrayItem: [Item] = []
+    var likedArrayItem: Results<FilmObject>?
+    
+    var detailFilm: FilmObject?
+    
+//    func readRealmData() {
+//        filmObjects = realm?.objects(FilmObject.self)
+//        print(realm?.configuration.fileURL)
+//    }
     
     func showLikedItems() {
-        var likedArray: [Item] = []
-        for i in testArray {
-            if i.isLiked == true{
-                likedArray.append(i)
-            }
-        }
-        likedArrayItem = likedArray
+        let predicate = NSPredicate(format: "isLiked == true")
+        likedArrayItem = filmObjects?.filter(predicate)
+        
+    }
+    
+    func detailFilm(id: Int){
+        let film = filmObjects?.filter("id == \(id)")
+        detailFilm = film?.first
     }
     
     func toggleLike(index: Int) {
-        testArray[index].isLiked.toggle()
+        
+        if let likedFilm = filmObjects?[index] {
+            do {
+                
+                try! realm?.write({
+                    
+                    likedFilm.isLiked = !likedFilm.isLiked
+                    
+                })
+                
+            } catch {
+                
+                print("Error saving done status, \(error)")
+                
+            }
+        }
+        
     }
     
     func removeFromFavorite(id: Int) {
-        for i in testArray {
-            if i.id == id {
-                i.isLiked.toggle()
+        if let likedFilm = filmObjects?[id] {
+            do {
+                
+                try! realm?.write({
+                    
+                    likedFilm.isLiked = !likedFilm.isLiked
+                    
+                })
+                
+            } catch {
+                
+                print("Error saving done status, \(error)")
+                
             }
         }
     }
     
     func ratingSort() {
-        self.testArray.sort {
-            sortAscending ? ($0.testRating ?? 0) < ($1.testRating ?? 0) : ($0.testRating ?? 0) > ($1.testRating ?? 0)
-        }
-        newTestArray = testArray
+//        self.testArray.sort {
+//            sortAscending ? ($0.testRating ?? 0) < ($1.testRating ?? 0) : ($0.testRating ?? 0) > ($1.testRating ?? 0)
+//        }
+//        newTestArray = testArray
+        
+        arrayHelper = filmObjects?.sorted(byKeyPath: "testRating", ascending: sortAscending)
+    }
+    
+    func search(searchTextValue: String) {
+//        newTestArray = []
+//
+//        if searchTextValue == "" {
+//            newTestArray = testArray
+//        } else {
+//            for item in testArray {
+//                guard let unwrItem = item.testTitle else {
+//                    return
+//                }
+//
+//                if unwrItem.contains(searchTextValue) {
+//                    newTestArray.append(item)
+//                }
+//            }
+//        }
+//
+//        newTestArray = testArray.filter({
+//            $0.testTitle?.range(of: searchTextValue, options: .caseInsensitive) != nil
+//        })
+        
+        let predicate = NSPredicate(format: "testTitle CONTAINS [c]%@", searchTextValue)
+        
+        arrayHelper = filmObjects?.filter(predicate)
     }
 }
