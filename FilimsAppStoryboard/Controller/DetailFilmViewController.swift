@@ -25,7 +25,6 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     @IBOutlet weak var descriptionLablel: UITextView!
     
     @IBOutlet var storyboardTapGesture: UITapGestureRecognizer!
-    var posterString: String!
     
     var recievedIndex: Int = Int()
     var generalImageIndex: Int = Int()
@@ -51,17 +50,19 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         isLikeIcon.isUserInteractionEnabled = true
         isLikeIcon.addGestureRecognizer(tap)
         
-        filmTitleLabel.text = choosedItem?.testTitle
-        releaseYearLabel.text = "Release: \(String(choosedItem?.testYear ?? "0"))"
-        ratingLabel.text = "Rating \(String(choosedItem?.testRating ?? 0))"
-        filmPoster.image = UIImage(named: choosedItem?.testPic ?? "1")
+        DispatchQueue.main.async {
+            self.filmTitleLabel.text = self.choosedItem?.testTitle
+            self.releaseYearLabel.text = "Release: \(String(self.choosedItem?.testYear ?? "0"))"
+            self.ratingLabel.text = "Rating \(String(self.choosedItem?.testRating ?? 0))"
+            self.filmPoster.image = UIImage(named: self.choosedItem?.testPic ?? "1")
+            
+            self.choosedItem?.isLiked ?? false ? (self.isLikeIcon.tintColor = .red) : (self.isLikeIcon.tintColor = .gray)
+        }
         
-        choosedItem?.isLiked ?? false ? (isLikeIcon.tintColor = .red) : (isLikeIcon.tintColor = .gray)
         
         framesMovieCollectionView.delegate = self
         framesMovieCollectionView.dataSource = self
         
-        storyboardTapGesture.name = posterString
         storyboardTapGesture.addTarget(self, action: #selector(tapGestureAction(_ :)))
         
         DispatchQueue.main.async {
