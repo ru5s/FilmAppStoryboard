@@ -70,8 +70,10 @@ class MainViewController: UIViewController {
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
         
-        collectioView.reloadData()
     }
     
     @IBAction func sortBtnAction(_ sender: Any) {
@@ -79,7 +81,9 @@ class MainViewController: UIViewController {
         model.sortAscending.toggle()
         model.ratingSort()
         
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
 }
 
@@ -87,7 +91,9 @@ extension MainViewController: MainVCDelegate {
     
     func removeFromFavorite(id: Int) {
         model.removeFromFavorite(id: id)
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
     
 }
@@ -124,7 +130,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     @objc func tapOnLikeImage(sender: UITapGestureRecognizer){
         let index = sender.view?.tag
         model.toggleLike(index: index ?? 0)
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -156,11 +164,15 @@ extension MainViewController: DetailFilmVCDelegate, FavoriteVCDelegate {
     func toggleLike(id: Int) {
         model.toggleLike(index: id)
         
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
     
     func updateData(){
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
 }
 
@@ -174,7 +186,9 @@ extension MainViewController: UISearchBarDelegate{
             model.ratingSort()
         }
         
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -187,6 +201,8 @@ extension MainViewController: UISearchBarDelegate{
         
         model.ratingSort()
         
-        collectioView.reloadData()
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+        }
     }
 }

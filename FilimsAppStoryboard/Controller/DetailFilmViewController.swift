@@ -61,9 +61,12 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         framesMovieCollectionView.delegate = self
         framesMovieCollectionView.dataSource = self
         
-        framesMovieCollectionView.reloadData()
         storyboardTapGesture.name = posterString
         storyboardTapGesture.addTarget(self, action: #selector(tapGestureAction(_ :)))
+        
+        DispatchQueue.main.async {
+            self.framesMovieCollectionView.reloadData()
+        }
     }
     
     @objc func toggleLike() {

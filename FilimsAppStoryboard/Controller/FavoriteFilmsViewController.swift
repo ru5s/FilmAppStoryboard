@@ -28,8 +28,9 @@ class FavoriteFilmsViewController: UIViewController {
         let xibCell = UINib(nibName: "FavoriteCollectionViewCell", bundle: nil)
         collectionView.register(xibCell, forCellWithReuseIdentifier: "FavoriteCell")
         
-        collectionView.reloadData()
-        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
 }
@@ -85,7 +86,9 @@ extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionVie
         
         model.removeFromFavorite(id: index ?? 0)
         delegate?.updateData()
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     
@@ -95,7 +98,9 @@ extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionVie
 extension FavoriteFilmsViewController: DetailFilmVCDelegate {
     
     func updateData() {
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     
