@@ -9,16 +9,21 @@ import UIKit
 
 class FavoriteCollectionViewCell: UICollectionViewCell {
     
+    let urlService = URLService()
+    
+    let adress: String = "https://image.tmdb.org/t/p/w500/"
+    
     var data: FilmObject? {
         didSet {
-            guard data != nil else {
+            guard let unwrData = data, let url = URL(string: adress + unwrData.filmPic) else {
                 return
             }
-            
-            favoriteImage.image = UIImage(named: data?.testPic ?? "1")
-            favoriteTitle.text = data?.testTitle
-            favoriteYearRelease.text = data?.testYear ?? "0"
-            favoriteRating.text = String(data?.testRating ?? 0)
+            urlService.getSetPoster(withUrl: url) { image in
+                self.favoriteImage.image = image
+            }
+            favoriteTitle.text = data?.filmTitle
+            favoriteYearRelease.text = String(data?.filmYear ?? 0000)
+            favoriteRating.text = String(data?.filmRating ?? 0)
             
             data?.isLiked ?? false ? (likeImage.tintColor = .red) : (likeImage.tintColor = .gray)
         }
@@ -41,13 +46,4 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    
-    @IBAction func unwindToPresentingViewController(segue:UIStoryboardSegue){
-        if segue.identifier == "likeData" {
-            if let VC2 = segue.source as? MainViewController {
-                VC2.removeFromFavorite(id: 0)
-            }
-            
-        }
-    }
 }

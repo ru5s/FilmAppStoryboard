@@ -14,7 +14,7 @@ class FavoriteFilmsViewController: UIViewController {
     
     let model = Model()
     
-    var detailedFilmIndex: Int = 0
+    var detailedFilmIndex: Int?
     var delegate: FavoriteVCDelegate?
     
     override func viewDidLoad() {
@@ -66,7 +66,7 @@ extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        detailedFilmIndex = indexPath.row
+        detailedFilmIndex = model.likedArrayItem?[indexPath.row].id
         
         performSegue(withIdentifier: "showDetailFromFavotite", sender: nil)
         
@@ -76,16 +76,20 @@ extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionVie
 
         if segue.identifier == "showDetailFromFavotite" {
             let detailVC = segue.destination as! DetailFilmViewController
-            detailVC.getData(item: model.filmObjects?[detailedFilmIndex].id ?? 0)
+            detailVC.getData(item: detailedFilmIndex ?? 0)
             detailVC.delegate = self
         }
     }
     
     @objc func tapOnLikeImage(sender: UITapGestureRecognizer){
-        let index = sender.view?.tag
+        let id = sender.view?.tag
         
-        model.removeFromFavorite(id: index ?? 0)
+        guard let id = id else {return}
+        
+        model.toggleLike(id: id)
+        
         delegate?.updateData()
+        
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }

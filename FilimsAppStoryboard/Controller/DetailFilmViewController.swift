@@ -26,9 +26,9 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBOutlet var storyboardTapGesture: UITapGestureRecognizer!
     
-    var recievedIndex: Int = Int()
-    var generalImageIndex: Int = Int()
-    var local: Bool = false
+    var tapTouched: Bool = false
+    
+    var idFilm: Int?
     
     var delegate: DetailFilmVCDelegate?
     
@@ -40,21 +40,33 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     var choosedItem: FilmObject?
     
+    let adress: String = "https://image.tmdb.org/t/p/w500/"
+    let urlService = URLService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isLikeIcon.layer.opacity = 0.75
-        
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(toggleLike))
+        
+        isLikeIcon.layer.opacity = 0.75
         isLikeIcon.isUserInteractionEnabled = true
         isLikeIcon.addGestureRecognizer(tap)
         
         DispatchQueue.main.async {
-            self.filmTitleLabel.text = self.choosedItem?.testTitle
-            self.releaseYearLabel.text = "Release: \(String(self.choosedItem?.testYear ?? "0"))"
-            self.ratingLabel.text = "Rating \(String(self.choosedItem?.testRating ?? 0))"
-            self.filmPoster.image = UIImage(named: self.choosedItem?.testPic ?? "1")
+            
+            guard let unwrData = self.choosedItem, let url = URL(string: self.adress + unwrData.filmPic) else {
+                return
+            }
+            
+            self.urlService.getSetPoster(withUrl: url) { image in
+                self.filmPoster.image = image
+            }
+            
+            self.filmTitleLabel.text = self.choosedItem?.filmTitle
+            self.releaseYearLabel.text = "Release: \(String(self.choosedItem?.filmYear ?? 0000))"
+            self.ratingLabel.text = "Rating \(String(self.choosedItem?.filmRating ?? 0))"
+            self.descriptionLablel.text = self.choosedItem?.about ?? ""
             
             self.choosedItem?.isLiked ?? false ? (self.isLikeIcon.tintColor = .red) : (self.isLikeIcon.tintColor = .gray)
         }
@@ -71,7 +83,9 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @objc func toggleLike() {
-        model.toggleLike(index: choosedItem?.id ?? Int())
+        guard let id = choosedItem?.id else {return}
+        
+        model.toggleLike(id: id)
         choosedItem?.isLiked ?? false ? (isLikeIcon.tintColor = .red) : (isLikeIcon.tintColor = .gray)
         delegate?.updateData()
     }
@@ -104,42 +118,47 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
-        local = false
-        if sender.state == .ended{
-            self.performSegue(withIdentifier: "DoubleTapFullPictures", sender: Any?.self)
-        }
+
+        
+        tapTouched = true
+//        self.performSegue(withIdentifier: "DoubleTapFullPictures", sender: Any?.self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destVC = segue.destination as? PosterFullViewController else {return}
         
-        local ? (destVC.detailedIndexPath = recievedIndex) : (destVC.detailedIndexPath = choosedItem?.id ?? 0)
-        local = false
+        if segue.identifier == "DoubleTapFullPictures" {
+            guard let destVC = segue.destination as? PosterFullViewController else {return}
+            guard let id = choosedItem?.id else {return}
+            
+            destVC.getData(idImage: id)
+    //        tapTouched == true ? destVC.getData(idImage: id) : destVC.getData(idImage: idFilm ?? 1)
+            tapTouched = false
+            destVC.transitioningDelegate = self
+            destVC.modalPresentationStyle = .custom
+        }
         
-        destVC.transitioningDelegate = self
-        destVC.modalPresentationStyle = .custom
+        
     }
     
 }
 
 extension DetailFilmViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayImage.count
+        return choosedItem?.screenshots.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = framesMovieCollectionView.dequeueReusableCell(withReuseIdentifier: "DetailFilmCell", for: indexPath) as? DetailFilmCollectionViewCell else {return UICollectionViewCell()}
         cell.DetailFilmImages.layer.cornerRadius = 15
-        cell.DetailFilmImages.image = arrayImage[indexPath.row]
+        cell.DetailFilmImages.image = UIImage(named: model.filmObjects?[indexPath.row].filmPic ?? "1")
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        local = true
-        recievedIndex = indexPath.row
+        idFilm = model.filmObjects?[indexPath.row].id ?? 0
         self.performSegue(withIdentifier: "DoubleTapFullPictures", sender: Any?.self)
     }
     
