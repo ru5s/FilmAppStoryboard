@@ -30,10 +30,30 @@
 		B5CDDF7729A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */; };
 		B5E1224129E42A4F00D92FFE /* JSONParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1224029E42A4F00D92FFE /* JSONParsingService.swift */; };
 		B5E1224329E4606300D92FFE /* IsLikedFilmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1224229E4606300D92FFE /* IsLikedFilmObjects.swift */; };
+		B5EA6CBF2A0103F700B1BD27 /* FilimsAppStoryboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA6CBE2A0103F700B1BD27 /* FilimsAppStoryboardUITests.swift */; };
+		B5EA6CC12A0103F700B1BD27 /* FilimsAppStoryboardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA6CC02A0103F700B1BD27 /* FilimsAppStoryboardUITestsLaunchTests.swift */; };
+		B5EA6CCE2A01041500B1BD27 /* FilimsAppStoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA6CCD2A01041500B1BD27 /* FilimsAppStoryboardTests.swift */; };
 		B5FCEF3229D2BD0100890ABF /* FilmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEF3129D2BD0100890ABF /* FilmObject.swift */; };
 		B5FFEEED29B71B6B00BE1A65 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFEEEC29B71B6B00BE1A65 /* Model.swift */; };
 		F0933453D6A5E9C1DE67BCDC /* Pods_FilimsAppStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3E9BE34F88169395E20FA4 /* Pods_FilimsAppStoryboard.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5EA6CC22A0103F700B1BD27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56617722992BB1600D24AC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56617792992BB1600D24AC2;
+			remoteInfo = FilimsAppStoryboard;
+		};
+		B5EA6CCF2A01041500B1BD27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56617722992BB1600D24AC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56617792992BB1600D24AC2;
+			remoteInfo = FilimsAppStoryboard;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7847526721F10186F159740A /* Pods-FilimsAppStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +82,11 @@
 		B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilmCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5E1224029E42A4F00D92FFE /* JSONParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingService.swift; sourceTree = "<group>"; };
 		B5E1224229E4606300D92FFE /* IsLikedFilmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsLikedFilmObjects.swift; sourceTree = "<group>"; };
+		B5EA6CBC2A0103F700B1BD27 /* FilimsAppStoryboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilimsAppStoryboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5EA6CBE2A0103F700B1BD27 /* FilimsAppStoryboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilimsAppStoryboardUITests.swift; sourceTree = "<group>"; };
+		B5EA6CC02A0103F700B1BD27 /* FilimsAppStoryboardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilimsAppStoryboardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B5EA6CCB2A01041500B1BD27 /* FilimsAppStoryboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilimsAppStoryboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5EA6CCD2A01041500B1BD27 /* FilimsAppStoryboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilimsAppStoryboardTests.swift; sourceTree = "<group>"; };
 		B5FCEF3129D2BD0100890ABF /* FilmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmObject.swift; sourceTree = "<group>"; };
 		B5FFEEEC29B71B6B00BE1A65 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E0387FA2FD02A714D5DB5E42 /* Pods-FilimsAppStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.release.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +99,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0933453D6A5E9C1DE67BCDC /* Pods_FilimsAppStoryboard.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5EA6CB92A0103F700B1BD27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5EA6CC82A01041500B1BD27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				B566177C2992BB1600D24AC2 /* FilimsAppStoryboard */,
+				B5EA6CBD2A0103F700B1BD27 /* FilimsAppStoryboardUITests */,
+				B5EA6CCC2A01041500B1BD27 /* FilimsAppStoryboardTests */,
 				B566177B2992BB1600D24AC2 /* Products */,
 				717CF22A80606B7DE8ECAF02 /* Pods */,
 				F6DC3F50BF80FEFC86986704 /* Frameworks */,
@@ -103,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				B566177A2992BB1600D24AC2 /* FilimsAppStoryboard.app */,
+				B5EA6CBC2A0103F700B1BD27 /* FilimsAppStoryboardUITests.xctest */,
+				B5EA6CCB2A01041500B1BD27 /* FilimsAppStoryboardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +190,23 @@
 				B5A2088F29EF121800EB5974 /* Note.swift */,
 			);
 			path = Note;
+			sourceTree = "<group>";
+		};
+		B5EA6CBD2A0103F700B1BD27 /* FilimsAppStoryboardUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B5EA6CBE2A0103F700B1BD27 /* FilimsAppStoryboardUITests.swift */,
+				B5EA6CC02A0103F700B1BD27 /* FilimsAppStoryboardUITestsLaunchTests.swift */,
+			);
+			path = FilimsAppStoryboardUITests;
+			sourceTree = "<group>";
+		};
+		B5EA6CCC2A01041500B1BD27 /* FilimsAppStoryboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5EA6CCD2A01041500B1BD27 /* FilimsAppStoryboardTests.swift */,
+			);
+			path = FilimsAppStoryboardTests;
 			sourceTree = "<group>";
 		};
 		B5F2347E29AF3FDE0081FC2B /* View */ = {
@@ -218,6 +278,42 @@
 			productReference = B566177A2992BB1600D24AC2 /* FilimsAppStoryboard.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B5EA6CBB2A0103F700B1BD27 /* FilimsAppStoryboardUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5EA6CC62A0103F700B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardUITests" */;
+			buildPhases = (
+				B5EA6CB82A0103F700B1BD27 /* Sources */,
+				B5EA6CB92A0103F700B1BD27 /* Frameworks */,
+				B5EA6CBA2A0103F700B1BD27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5EA6CC32A0103F700B1BD27 /* PBXTargetDependency */,
+			);
+			name = FilimsAppStoryboardUITests;
+			productName = FilimsAppStoryboardUITests;
+			productReference = B5EA6CBC2A0103F700B1BD27 /* FilimsAppStoryboardUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		B5EA6CCA2A01041500B1BD27 /* FilimsAppStoryboardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5EA6CD12A01041500B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardTests" */;
+			buildPhases = (
+				B5EA6CC72A01041500B1BD27 /* Sources */,
+				B5EA6CC82A01041500B1BD27 /* Frameworks */,
+				B5EA6CC92A01041500B1BD27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5EA6CD02A01041500B1BD27 /* PBXTargetDependency */,
+			);
+			name = FilimsAppStoryboardTests;
+			productName = FilimsAppStoryboardTests;
+			productReference = B5EA6CCB2A01041500B1BD27 /* FilimsAppStoryboardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -225,11 +321,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					B56617792992BB1600D24AC2 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					B5EA6CBB2A0103F700B1BD27 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B56617792992BB1600D24AC2;
+					};
+					B5EA6CCA2A01041500B1BD27 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B56617792992BB1600D24AC2;
 					};
 				};
 			};
@@ -247,6 +351,8 @@
 			projectRoot = "";
 			targets = (
 				B56617792992BB1600D24AC2 /* FilimsAppStoryboard */,
+				B5EA6CBB2A0103F700B1BD27 /* FilimsAppStoryboardUITests */,
+				B5EA6CCA2A01041500B1BD27 /* FilimsAppStoryboardTests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,6 +367,20 @@
 				B56617872992BB1800D24AC2 /* Assets.xcassets in Resources */,
 				B56617852992BB1600D24AC2 /* Main.storyboard in Resources */,
 				B55D9F4B29B735D10084885E /* FavoriteCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5EA6CBA2A0103F700B1BD27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5EA6CC92A01041500B1BD27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +456,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5EA6CB82A0103F700B1BD27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5EA6CBF2A0103F700B1BD27 /* FilimsAppStoryboardUITests.swift in Sources */,
+				B5EA6CC12A0103F700B1BD27 /* FilimsAppStoryboardUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5EA6CC72A01041500B1BD27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5EA6CCE2A01041500B1BD27 /* FilimsAppStoryboardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5EA6CC32A0103F700B1BD27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56617792992BB1600D24AC2 /* FilimsAppStoryboard */;
+			targetProxy = B5EA6CC22A0103F700B1BD27 /* PBXContainerItemProxy */;
+		};
+		B5EA6CD02A01041500B1BD27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56617792992BB1600D24AC2 /* FilimsAppStoryboard */;
+			targetProxy = B5EA6CCF2A01041500B1BD27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B56617832992BB1600D24AC2 /* Main.storyboard */ = {
@@ -408,7 +558,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -462,7 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -538,6 +688,80 @@
 			};
 			name = Release;
 		};
+		B5EA6CC42A0103F700B1BD27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FN66JN9TVU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FilimsAppStoryboard;
+			};
+			name = Debug;
+		};
+		B5EA6CC52A0103F700B1BD27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FN66JN9TVU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FilimsAppStoryboard;
+			};
+			name = Release;
+		};
+		B5EA6CD22A01041500B1BD27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FN66JN9TVU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilimsAppStoryboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FilimsAppStoryboard";
+			};
+			name = Debug;
+		};
+		B5EA6CD32A01041500B1BD27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FN66JN9TVU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilimsAppStoryboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FilimsAppStoryboard";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -555,6 +779,24 @@
 			buildConfigurations = (
 				B566178F2992BB1800D24AC2 /* Debug */,
 				B56617902992BB1800D24AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5EA6CC62A0103F700B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5EA6CC42A0103F700B1BD27 /* Debug */,
+				B5EA6CC52A0103F700B1BD27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5EA6CD12A01041500B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5EA6CD22A01041500B1BD27 /* Debug */,
+				B5EA6CD32A01041500B1BD27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
