@@ -37,7 +37,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="195" height="350"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -83,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EdJ-Oj-Lj1">
-                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                <rect key="frame" x="10" y="92" width="394" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8dI-pE-TOH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -106,10 +105,10 @@
                         <viewLayoutGuide key="safeArea" id="Gfp-Tc-Omk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Gfp-Tc-Omk" firstAttribute="trailing" secondItem="EdJ-Oj-Lj1" secondAttribute="trailing" id="Fma-If-HDI"/>
                             <constraint firstItem="EdJ-Oj-Lj1" firstAttribute="top" secondItem="Gfp-Tc-Omk" secondAttribute="top" id="KPG-Js-fGa"/>
-                            <constraint firstItem="EdJ-Oj-Lj1" firstAttribute="leading" secondItem="Gfp-Tc-Omk" secondAttribute="leading" id="g5l-sK-q7L"/>
+                            <constraint firstItem="EdJ-Oj-Lj1" firstAttribute="leading" secondItem="Gfp-Tc-Omk" secondAttribute="leading" constant="10" id="Kio-KG-oRl"/>
                             <constraint firstItem="Gfp-Tc-Omk" firstAttribute="bottom" secondItem="EdJ-Oj-Lj1" secondAttribute="bottom" id="h7u-La-8fD"/>
+                            <constraint firstItem="Gfp-Tc-Omk" firstAttribute="trailing" secondItem="EdJ-Oj-Lj1" secondAttribute="trailing" constant="10" id="jUq-UA-tkj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Любимые фильмы" id="YQZ-0u-2ES"/>
@@ -120,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GI-3X-fBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="697"/>
+            <point key="canvasLocation" x="1011.5942028985507" y="696.42857142857144"/>
         </scene>
         <!--Detail Film View Controller-->
         <scene sceneID="4kb-ZT-olI">
