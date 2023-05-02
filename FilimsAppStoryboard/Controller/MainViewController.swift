@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
-protocol MainVCDelegate {
-    func removeFromFavorite(id: Int)
-}
+//protocol MainVCDelegate {
+//    func removeFromFavorite(id: Int)
+//}
 
 protocol DetailFilmVCDelegate {
     func updateData()
@@ -34,44 +34,48 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     
+    let urlService = URLService()
+    
+    let group = DispatchGroup()
+    let thread = DispatchQueue(label: "com.filmAppStoryboard")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Realm
-        let realm = try? Realm()
-//        let filmObject = FilmObject()
         
-//        model.readRealmData()
-        print("films is \(model.filmObjects?.count ?? 0)")
-        /* Only for first add data and open mongoDB
-        do {
-            try realm?.write({
-                realm?.add(filmObject)
-            })
-        } catch {
-            print("\(error.localizedDescription)")
-        }
-         */
-//        print(realm?.configuration.fileURL)
-        // end
-        
-//        model.newTestArray = model.testArray
+//        group.enter()
+//        thread.async {
+            urlService.dataRequest(page: 9, requestOptions: .allMovie)
+//            self.group.leave()
+//        }
+//        group.enter()
+//        thread.async {
+//        group.wait()
+        model.screenshotsLink()
+//            self.group.leave()
+//        }
         model.ratingSort()
+//        group.notify(queue: .main) {
+//            self.model.ratingSort()
+//            
+//        }
+        
         
         collectioView.delegate = self
         collectioView.dataSource = self
         
         let xibCell = UINib(nibName: "MainFilmCollectionViewCell", bundle: nil)
         collectioView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
-
+        
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Find Your Film"
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        collectioView.reloadData()
         DispatchQueue.main.async {
             self.collectioView.reloadData()
+            
         }
         
     }
@@ -81,21 +85,9 @@ class MainViewController: UIViewController {
         model.sortAscending.toggle()
         model.ratingSort()
         
-        DispatchQueue.main.async {
-            self.collectioView.reloadData()
-        }
+        collectioView.reloadData()
+        
     }
-}
-
-extension MainViewController: MainVCDelegate {
-    
-    func removeFromFavorite(id: Int) {
-        model.removeFromFavorite(id: id)
-        DispatchQueue.main.async {
-            self.collectioView.reloadData()
-        }
-    }
-    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -118,6 +110,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.data = self.model.arrayHelper?[indexPath.item]
         
+        model.checkLikeFilm(id: Int(model.arrayHelper?[indexPath.row].id ?? 0)) ? (cell.likeImage.tintColor = .red) : (cell.likeImage.tintColor = .gray)
+        
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(tapOnLikeImage))
         cell.likeImage.isUserInteractionEnabled = true
@@ -127,12 +121,23 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    
+    
     @objc func tapOnLikeImage(sender: UITapGestureRecognizer){
-        let index = sender.view?.tag
-        model.toggleLike(index: index ?? 0)
+        let id = sender.view?.tag
+        
+        guard let id = id else {return}
+        
         DispatchQueue.main.async {
-            self.collectioView.reloadData()
+            
+            UIView.animate(withDuration: 0.2) {
+                sender.view?.tintColor == .red ? (sender.view?.tintColor = .gray) : (sender.view?.tintColor = .red)
+            }
+            
+            self.model.toggleLike(id: id)
+
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -151,9 +156,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         if segue.identifier == "DetailFilmSegue" {
             let detailVC = segue.destination as! DetailFilmViewController
-
-            model.detailFilm(id: detailedFilmIndex ?? 0)
-            detailVC.getData(item: detailedFilmIndex ?? 0)
+            guard let detailedFilmIndex = detailedFilmIndex else {return}
+            detailVC.getData(item: detailedFilmIndex)
             detailVC.delegate = self
         }
     }
@@ -161,14 +165,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController: DetailFilmVCDelegate, FavoriteVCDelegate {
-    func toggleLike(id: Int) {
-        model.toggleLike(index: id)
-        
-        DispatchQueue.main.async {
-            self.collectioView.reloadData()
-        }
-    }
-    
     func updateData(){
         DispatchQueue.main.async {
             self.collectioView.reloadData()
@@ -177,6 +173,7 @@ extension MainViewController: DetailFilmVCDelegate, FavoriteVCDelegate {
 }
 
 extension MainViewController: UISearchBarDelegate{
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         model.arrayHelper = model.filmObjects
         model.search(searchTextValue: searchText)
