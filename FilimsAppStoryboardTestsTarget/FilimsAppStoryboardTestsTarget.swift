@@ -1,16 +1,18 @@
 //
-//  FilimsAppStoryboardTests.swift
-//  FilimsAppStoryboardTests
+//  FilimsAppStoryboardTestsTarget.swift
+//  FilimsAppStoryboardTestsTarget
 //
 //  Created by Ruslan Ismailov on 02/05/23.
 //
 
 import XCTest
 
-final class FilimsAppStoryboardTests: XCTestCase {
+final class FilimsAppStoryboardTestsTarget: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        continueAfterFailure = false
     }
 
     override func tearDownWithError() throws {

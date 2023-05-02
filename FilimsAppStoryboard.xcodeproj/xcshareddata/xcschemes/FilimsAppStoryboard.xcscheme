@@ -30,7 +30,7 @@
       shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
+            skipped = "YES"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
@@ -41,13 +41,35 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
+            skipped = "YES"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B5EA6CCA2A01041500B1BD27"
                BuildableName = "FilimsAppStoryboardTests.xctest"
                BlueprintName = "FilimsAppStoryboardTests"
+               ReferencedContainer = "container:FilimsAppStoryboard.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B5EA6CD72A01084D00B1BD27"
+               BuildableName = "FilimsAppStoryboardTestsTarget.xctest"
+               BlueprintName = "FilimsAppStoryboardTestsTarget"
+               ReferencedContainer = "container:FilimsAppStoryboard.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B5EA6CE42A01088D00B1BD27"
+               BuildableName = "FilimsAppStoryboardUITestsTarget.xctest"
+               BlueprintName = "FilimsAppStoryboardUITestsTarget"
                ReferencedContainer = "container:FilimsAppStoryboard.xcodeproj">
             </BuildableReference>
          </TestableReference>

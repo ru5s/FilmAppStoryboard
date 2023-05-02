@@ -1,13 +1,14 @@
 //
-//  FilimsAppStoryboardUITests.swift
-//  FilimsAppStoryboardUITests
+//  FilimsAppStoryboardUITestsTarget.swift
+//  FilimsAppStoryboardUITestsTarget
 //
 //  Created by Ruslan Ismailov on 02/05/23.
 //
 
 import XCTest
+@testable import FilimsAppStoryboard
 
-final class FilimsAppStoryboardUITests: XCTestCase {
+final class FilimsAppStoryboardUITestsTarget: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -30,4 +31,12 @@ final class FilimsAppStoryboardUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testLaunchPerformance() throws {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
+                XCUIApplication().launch()
+            }
+        }
+    }
 }

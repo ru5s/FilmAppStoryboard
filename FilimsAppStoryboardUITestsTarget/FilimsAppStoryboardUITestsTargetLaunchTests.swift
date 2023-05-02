@@ -1,13 +1,14 @@
 //
-//  FilimsAppStoryboardUITestsLaunchTests.swift
-//  FilimsAppStoryboardUITests
+//  FilimsAppStoryboardUITestsTargetLaunchTests.swift
+//  FilimsAppStoryboardUITestsTarget
 //
 //  Created by Ruslan Ismailov on 02/05/23.
 //
 
 import XCTest
+@testable import FilimsAppStoryboard
 
-final class FilimsAppStoryboardUITestsLaunchTests: XCTestCase {
+final class FilimsAppStoryboardUITestsTargetLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
