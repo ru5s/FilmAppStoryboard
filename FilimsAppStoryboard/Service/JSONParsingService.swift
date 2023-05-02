@@ -30,11 +30,6 @@ class JSONParsingService {
                 
                 var links: [String] = []
                 
-                //                for film in films {
-                //                    print("+++ id is \(film.id)")
-                
-                
-                
                 for item in jsonObjects {
                     
                     guard let filePath = item.file_path else {return}
@@ -42,16 +37,17 @@ class JSONParsingService {
                     
                 }
                 
-                thisFilm?.screenshots.append(objectsIn: links)
-                
-                guard let thisFilm = thisFilm else {return}
-                
-                realm?.add(thisFilm, update: .all)
-                //                }
-                
-                
-                
-                
+                if thisFilm?.screenshots.count ?? 0 < 1 {
+                    thisFilm?.screenshots.append(objectsIn: links)
+                    
+                    guard let thisFilm = thisFilm else {return}
+                    
+                    realm?.add(thisFilm, update: .all)
+                    
+                } else {
+                    
+                    return
+                }
                 
             })
             

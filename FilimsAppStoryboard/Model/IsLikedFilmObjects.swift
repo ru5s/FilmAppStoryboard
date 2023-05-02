@@ -15,7 +15,7 @@ class IsLikedFilmObjects: Object {
     @objc dynamic var filmTitle: String = ""
     @objc dynamic var filmYear: Int = 0000
     @objc dynamic var filmRating: Double = 0.0
-    @objc dynamic var filmScreens: String = ""
+    dynamic var filmScreens: List<String> = List<String>()
     @objc dynamic var about: String = ""
     @objc dynamic var isLiked: Bool = true
     

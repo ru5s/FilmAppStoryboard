@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 //protocol MainVCDelegate {
 //    func removeFromFavorite(id: Int)
@@ -36,16 +36,30 @@ class MainViewController: UIViewController {
     
     let urlService = URLService()
     
+    let group = DispatchGroup()
+    let thread = DispatchQueue(label: "com.filmAppStoryboard")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        DispatchQueue.main.async {
-            
-            urlService.dataRequest(requestOptions: .allMovie)
-            
+        
+//        group.enter()
+//        thread.async {
+            urlService.dataRequest(page: 9, requestOptions: .allMovie)
+//            self.group.leave()
+//        }
+//        group.enter()
+//        thread.async {
+//        group.wait()
+        model.screenshotsLink()
+//            self.group.leave()
+//        }
+        model.ratingSort()
+//        group.notify(queue: .main) {
+//            self.model.ratingSort()
+//            
 //        }
         
-        model.ratingSort()
         
         collectioView.delegate = self
         collectioView.dataSource = self
@@ -58,12 +72,11 @@ class MainViewController: UIViewController {
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        collectioView.reloadData()
         DispatchQueue.main.async {
             self.collectioView.reloadData()
-            self.model.screenshotsLink()
+            
         }
-//        collectioView.reloadData()
-        
         
     }
     
@@ -96,6 +109,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.likeImage.layer.opacity = 0.75
         
         cell.data = self.model.arrayHelper?[indexPath.item]
+        
+        model.checkLikeFilm(id: Int(model.arrayHelper?[indexPath.row].id ?? 0)) ? (cell.likeImage.tintColor = .red) : (cell.likeImage.tintColor = .gray)
         
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(tapOnLikeImage))

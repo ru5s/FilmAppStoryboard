@@ -10,4 +10,5 @@ import UIKit
 class DetailFilmCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var DetailFilmImages: UIImageView!
+    
 }

@@ -8,26 +8,6 @@
 import Foundation
 import RealmSwift
 
-
-//class Item {
-//
-//    var id: Int?
-//    var testPic: String?
-//    var testTitle: String?
-//    var testYear: Int?
-//    var testRating: Double?
-//    var isLiked: Bool
-//
-//    init (id: Int?, testPic: String?, testTitle: String?, testYear: Int?, testRating: Double?, isLiked: Bool) {
-//        self.id = id
-//        self.testPic = testPic
-//        self.testTitle = testTitle
-//        self.testYear = testYear
-//        self.testRating = testRating
-//        self.isLiked = isLiked
-//    }
-//}
-
 class Model {
     
     let realm = try? Realm()
@@ -46,43 +26,83 @@ class Model {
     
     var sortAscending: Bool = false
     
-    var likedArrayItem: Results<FilmObject>?
+    var likedArrayItem: Results<IsLikedFilmObjects>?
     
     var detailFilm: FilmObject?
     
     let urlService = URLService()
     
+//    var imageSet: [String] = []
+    
     func showLikedItems() {
         let predicate = NSPredicate(format: "isLiked == true")
-        likedArrayItem = filmObjects?.filter(predicate)
+        likedArrayItem = likedFilms?.filter(predicate)
         
     }
     
     func detailFilm(id: Int){
         let film = filmObjects?.filter("id == \(id)")
         detailFilm = film?.first
+        
     }
     
     func checkLikeFilm(id: Int) -> Bool {
         
         let predicate = NSPredicate(format: "id == \(id)")
         
-        let likeId = filmObjects?.filter(predicate).first
+        let likeId = likedFilms?.filter(predicate).first
         
-        return ((likeId?.isLiked) != nil)
+//        return ((likeId?.isLiked) != nil)
+        if likeId?.isLiked == true {
+            return true
+        }
+        return false
     }
     
     func toggleLike(id: Int) {
+        print("++ \(id)")
         
         let predicate = NSPredicate(format: "id == \(id)")
-        let likeId = filmObjects?.filter(predicate)
-        let likedFilm = likeId?.first
+        let likeIdFilmObjects = filmObjects?.filter(predicate)
+        let likedFilm = likeIdFilmObjects?.first
+        
+        let likeIdIsLikedFilmObjects = likedFilms?.filter(predicate).first
         
         guard let likedFilm = likedFilm else {return}
         
-        try! realm?.write({
-            likedFilm.isLiked = !likedFilm.isLiked
-        })
+        if likedFilm.isLiked || ((likeIdIsLikedFilmObjects?.isLiked) != nil) {
+            
+            let predicate = NSPredicate(format: "id == \(id)")
+            guard let unlike = likedFilms?.filter(predicate).first else { return }
+            
+            try! realm?.write({
+                realm?.delete(unlike)
+                
+                likedFilm.isLiked = false
+            })
+            
+        } else {
+            
+            try! realm?.write({
+                
+                let likeObject = IsLikedFilmObjects()
+                
+                likeObject.id = likedFilm.id
+                likeObject.filmPic = likedFilm.filmPic
+                likeObject.filmTitle = likedFilm.filmTitle
+                likeObject.about = likedFilm.about
+                likeObject.filmYear = likedFilm.filmYear
+                likeObject.filmRating = likedFilm.filmRating
+                likeObject.filmScreens.append(objectsIn: likedFilm.screenshots)
+                likeObject.isLiked = true
+                
+                likedFilm.isLiked = true
+             
+                realm?.add(likeObject, update: .all)
+            })
+            
+        }
+        
     }
     
     func screenshotsLink(){
@@ -102,6 +122,8 @@ class Model {
     func ratingSort() {
         arrayHelper = filmObjects?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
         print("+++ \(String(describing: realm?.configuration.fileURL))")
+        
+        
     }
     
     func search(searchTextValue: String) {

@@ -11,6 +11,7 @@ class MainFilmCollectionViewCell: UICollectionViewCell {
     
     let urlServise = URLService()
     let adress = "https://image.tmdb.org/t/p/w500/"
+    let model = Model()
     
     var data: FilmObject? {
         didSet {
@@ -25,7 +26,8 @@ class MainFilmCollectionViewCell: UICollectionViewCell {
             filmTitleLabel.text = data?.filmTitle
             releaseYearLabel.text = String(data?.filmYear ?? 0000)
             ratingLabel.text = String(data?.filmRating ?? 0)
-            data?.isLiked ?? false ? (likeImage.tintColor = .red) : (likeImage.tintColor = .gray)
+//            data?.isLiked ?? false ? (likeImage.tintColor = .red) : (likeImage.tintColor = .gray)
+            
             
         }
     }

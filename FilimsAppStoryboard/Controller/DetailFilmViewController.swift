@@ -82,6 +82,13 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
+    
+    @IBAction func openAllScreenshots(_ sender: Any) {
+        
+        
+        
+    }
+    
     @objc func toggleLike() {
         guard let id = choosedItem?.id else {return}
         
@@ -138,7 +145,13 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
             destVC.modalPresentationStyle = .custom
         }
         
-        
+        if segue.identifier == "FilmPicsSegue" {
+            
+            guard let filmPicsVC = segue.destination as? FilmPicsViewController else {return}
+            guard let id = choosedItem?.id else {return}
+            
+            filmPicsVC.getData(item: id)
+        }
     }
     
 }
@@ -151,7 +164,14 @@ extension DetailFilmViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = framesMovieCollectionView.dequeueReusableCell(withReuseIdentifier: "DetailFilmCell", for: indexPath) as? DetailFilmCollectionViewCell else {return UICollectionViewCell()}
         cell.DetailFilmImages.layer.cornerRadius = 15
-        cell.DetailFilmImages.image = UIImage(named: model.filmObjects?[indexPath.row].filmPic ?? "1")
+        cell.DetailFilmImages.image = UIImage(named: choosedItem?.screenshots[indexPath.row] ?? "")
+//        cell.data = self.choosedItem?.screenshots[indexPath.item]
+        
+        guard let url = URL(string: adress + (choosedItem?.screenshots[indexPath.row] ?? "")) else { return cell}
+        
+        urlService.getSetPoster(withUrl: url) { image in
+            cell.DetailFilmImages.image = image
+        }
         
         return cell
     }

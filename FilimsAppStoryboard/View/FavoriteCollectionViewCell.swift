@@ -13,7 +13,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     
     let adress: String = "https://image.tmdb.org/t/p/w500/"
     
-    var data: FilmObject? {
+    var data: IsLikedFilmObjects? {
         didSet {
             guard let unwrData = data, let url = URL(string: adress + unwrData.filmPic) else {
                 return
