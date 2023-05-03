@@ -31,12 +31,59 @@ final class FilimsAppStoryboardUITestsTarget: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
+    
+    func testInterface() throws {
+      //  /*
+        let app = XCUIApplication()
+        app.launch()
+        
+        let collectionView = app.collectionViews["collectioView"]
+        XCTAssert(collectionView.cells.count >= 0)
+        
+        let collectionViewsQuery = app.collectionViews
+        
+        let cellsQuery = collectionViewsQuery.cells
+         
+         let firstCell = cellsQuery.children(matching: .any).element(boundBy: 0)
+        
+        firstCell.swipeUp()
+        
+        let farCell = cellsQuery.children(matching: .any).element(boundBy: 5)
+        
+        farCell.swipeDown()
+         
+         firstCell.tap()
+        
+        let forwardButton = app.buttons["Forward"]
+        
+        forwardButton.tap()
+        
+        let backButton = app.navigationBars["FilimsAppStoryboard.FilmPicsView"].buttons["Back"]
+        
+        backButton.tap()
+        
+        app/*@START_MENU_TOKEN@*/.images["heart.fill"]/*[[".images[\"love\"]",".images[\"heart.fill\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let detailFilm = app.navigationBars["FilimsAppStoryboard.DetailFilmView"]
+        
+        let backToMainButton = detailFilm.buttons["Films app"]
+        
+        backToMainButton.tap()
+        
+        app.navigationBars["Films app"].children(matching: .button).matching(identifier: "Item").element(boundBy: 0).tap()
+        
+        let favoriteView = app.navigationBars["FilimsAppStoryboard.FavoriteFilmsViewController"]
+        
+        let favCollection = favoriteView.collectionViews["collectionView"]
+        XCTAssert(favCollection.cells.count >= 0)
+        
     }
 }

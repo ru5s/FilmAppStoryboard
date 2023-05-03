@@ -72,7 +72,7 @@ class Model {
         
         if likedFilm.isLiked || ((likeIdIsLikedFilmObjects?.isLiked) != nil) {
             
-            let predicate = NSPredicate(format: "id == \(id)")
+//            let predicate = NSPredicate(format: "id == \(id)")
             guard let unlike = likedFilms?.filter(predicate).first else { return }
             
             try! realm?.write({
