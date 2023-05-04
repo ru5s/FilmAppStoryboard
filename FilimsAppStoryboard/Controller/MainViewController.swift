@@ -79,6 +79,8 @@ class MainViewController: UIViewController {
     }
     @IBAction func tappedPopular(_ sender: Any) {
         
+        urlService.dataRequest(page: 1, requestOptions: .allMovie)
+        
     }
     
     @IBAction func tappedTopRated(_ sender: Any) {
@@ -88,6 +90,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func tappedWatchNow(_ sender: Any) {
+        
+        urlService.dataRequest(page: 1, requestOptions: .nowPlaying)
+        
     }
     
 }

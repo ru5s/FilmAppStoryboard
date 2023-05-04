@@ -47,7 +47,7 @@ class URLService {
             
 //            print("++ \(String(data: unwrData, encoding: .utf8)) ")
             
-            self.parser.parseJSON(parseData: unwrData, parseError: error)
+            self.parser.parseJSON(parseData: unwrData, parseError: error, type: requestOptions.rawValue)
             
         }
         task.resume()

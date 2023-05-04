@@ -58,7 +58,7 @@ class JSONParsingService {
         }
     }
     
-    func parseJSON(parseData: Data, parseError: Error?) {
+    func parseJSON(parseData: Data, parseError: Error?, type: String) {
         
         do {
             
@@ -89,6 +89,7 @@ class JSONParsingService {
                         object.filmYear = Int(unwrFilmYear.prefix(4)) ?? 0000
                         object.filmRating = unwrFilmRating
                         object.isLiked = false
+                        object.type = type
                     }
                     
                     
