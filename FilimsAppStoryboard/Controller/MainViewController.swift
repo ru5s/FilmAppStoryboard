@@ -42,24 +42,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        urlService.dataRequest(page: 1, requestOptions: .allMovie)
         
-//        group.enter()
-//        thread.async {
-            urlService.dataRequest(page: 9, requestOptions: .allMovie)
-//            self.group.leave()
-//        }
-//        group.enter()
-//        thread.async {
-//        group.wait()
-        model.screenshotsLink()
-//            self.group.leave()
-//        }
         model.ratingSort()
-//        group.notify(queue: .main) {
-//            self.model.ratingSort()
-//            
-//        }
-        
         
         collectioView.delegate = self
         collectioView.dataSource = self
@@ -80,6 +65,10 @@ class MainViewController: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        model.screenshotsLink()
+    }
+    
     @IBAction func sortBtnAction(_ sender: Any) {
         model.sortAscending ? (sortBtn.image = UIImage(systemName: "arrow.up")) : (sortBtn.image = UIImage(systemName: "arrow.down"))
         model.sortAscending.toggle()
@@ -88,6 +77,19 @@ class MainViewController: UIViewController {
         collectioView.reloadData()
         
     }
+    @IBAction func tappedPopular(_ sender: Any) {
+        
+    }
+    
+    @IBAction func tappedTopRated(_ sender: Any) {
+        
+        urlService.dataRequest(page: 1, requestOptions: .topRated)
+        
+    }
+    
+    @IBAction func tappedWatchNow(_ sender: Any) {
+    }
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{

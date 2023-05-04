@@ -8,16 +8,16 @@
 import Foundation
 import UIKit
 
-class URLService {
+enum RequestOptions: String {
+    case allMovie = "popular"
+    case latest = "latest"
+    case nowPlaying = "now_playing"
+    case topRated = "top_rated"
+    case upcoming = "upcoming"
     
-    enum RequestOptions: String {
-        case allMovie = "popular"
-        case latest = "latest"
-        case nowPlaying = "now_playing"
-        case topRated = "top_rated"
-        case upcoming = "upcoming"
-        
-    }
+}
+
+class URLService {
     
     let adress: String = "https://api.themoviedb.org/"
     

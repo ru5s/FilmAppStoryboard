@@ -18,6 +18,7 @@ class IsLikedFilmObjects: Object {
     dynamic var filmScreens: List<String> = List<String>()
     @objc dynamic var about: String = ""
     @objc dynamic var isLiked: Bool = true
+    @objc dynamic var type: String = ""
     
     override class func primaryKey() -> String? {
         return "id"
