@@ -45,34 +45,31 @@
                                 </collectionReusableView>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-3x-YMS">
-                                <rect key="frame" x="15" y="102" width="341.5" height="34.5"/>
+                                <rect key="frame" x="15" y="102" width="309" height="32"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0SR-Ka-1Wu">
-                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Popular">
-                                            <color key="baseBackgroundColor" systemColor="systemTealColor"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0SR-Ka-1Wu">
+                                        <rect key="frame" x="0.0" y="0.0" width="82" height="32"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Popular"/>
                                         <connections>
                                             <action selector="tappedPopular:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cqx-Zk-y08"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGs-VC-OLs">
-                                        <rect key="frame" x="116.5" y="0.0" width="108.5" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Top Rated">
-                                            <color key="baseBackgroundColor" systemColor="systemGray2Color"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGs-VC-OLs">
+                                        <rect key="frame" x="90" y="0.0" width="102" height="32"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Top Rated"/>
                                         <connections>
                                             <action selector="tappedTopRated:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NNu-Ra-V2V"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVO-Fu-xjN">
-                                        <rect key="frame" x="233" y="0.0" width="108.5" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Watch now">
-                                            <color key="baseBackgroundColor" systemColor="systemGray2Color"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVO-Fu-xjN">
+                                        <rect key="frame" x="200" y="0.0" width="109" height="32"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Watch now"/>
                                         <connections>
                                             <action selector="tappedWatchNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hb7-64-poz"/>
                                         </connections>
@@ -108,7 +105,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectioView" destination="mQw-fM-0y5" id="UfE-cb-fAT"/>
+                        <outlet property="popularBtn" destination="0SR-Ka-1Wu" id="8H1-Ce-hbf"/>
                         <outlet property="sortBtn" destination="uS6-Jl-fW6" id="U6F-gr-HHO"/>
+                        <outlet property="topRatedBnt" destination="QGs-VC-OLs" id="3LB-gN-fh7"/>
+                        <outlet property="watchNowBtn" destination="ZVO-Fu-xjN" id="NFw-E5-Mpb"/>
                         <segue destination="car-Bs-c28" kind="show" identifier="DetailFilmSegue" id="x07-qg-Y1a"/>
                     </connections>
                 </viewController>
@@ -501,6 +501,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zs5-00-3EO">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemTealColor"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemTealColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" systemColor="systemTealColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

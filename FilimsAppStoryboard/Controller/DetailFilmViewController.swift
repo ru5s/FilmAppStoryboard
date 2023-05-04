@@ -40,7 +40,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     var choosedItem: FilmObject?
     
-    let adress: String = "https://image.tmdb.org/t/p/w500/"
+    let adress: String = "https://image.tmdb.org/t/p/w500"
     let urlService = URLService()
     
     override func viewDidLoad() {

@@ -25,6 +25,11 @@ class MainViewController: UIViewController {
     //add outlet to collection view
     @IBOutlet weak var collectioView: UICollectionView!
     
+    @IBOutlet weak var popularBtn: UIButton!
+    
+    @IBOutlet weak var topRatedBnt: UIButton!
+    
+    @IBOutlet weak var watchNowBtn: UIButton!
     //add search bar
     var searchController = UISearchController()
     
@@ -35,19 +40,27 @@ class MainViewController: UIViewController {
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     
     let urlService = URLService()
+    var page: Int = 1
     
     let group = DispatchGroup()
     let thread = DispatchQueue(label: "com.filmAppStoryboard")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        urlService.dataRequest(page: 1, requestOptions: .allMovie)
-        
-        model.ratingSort()
-        
         collectioView.delegate = self
         collectioView.dataSource = self
+        
+        popularBtn.backgroundColor = .systemTeal
+        popularBtn.layer.cornerRadius = 10
+        topRatedBnt.backgroundColor = .systemGray2
+        topRatedBnt.layer.cornerRadius = 10
+        watchNowBtn.backgroundColor = .systemGray2
+        watchNowBtn.layer.cornerRadius = 10
+        
+        
+        urlService.dataRequest(page: page, requestOptions: .allMovie)
+        
+        
         
         let xibCell = UINib(nibName: "MainFilmCollectionViewCell", bundle: nil)
         collectioView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
@@ -57,8 +70,12 @@ class MainViewController: UIViewController {
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        collectioView.reloadData()
-        DispatchQueue.main.async {
+        
+        model.sortByType(type: .allMovie)
+        model.ratingSort()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            
             self.collectioView.reloadData()
             
         }
@@ -71,28 +88,57 @@ class MainViewController: UIViewController {
     
     @IBAction func sortBtnAction(_ sender: Any) {
         model.sortAscending ? (sortBtn.image = UIImage(systemName: "arrow.up")) : (sortBtn.image = UIImage(systemName: "arrow.down"))
-        model.sortAscending.toggle()
-        model.ratingSort()
         
-        collectioView.reloadData()
+        model.ratingSort()
+        model.sortAscending.toggle()
+        
+        
+        DispatchQueue.main.async {
+            self.collectioView.reloadData()
+            
+        }
         
     }
     @IBAction func tappedPopular(_ sender: Any) {
         
-        urlService.dataRequest(page: 1, requestOptions: .allMovie)
+        popularBtn.backgroundColor = .systemTeal
+        topRatedBnt.backgroundColor = .systemGray2
+        watchNowBtn.backgroundColor = .systemGray2
         
+        urlService.dataRequest(page: page, requestOptions: .allMovie)
+        model.sortByType(type: .allMovie)
+        model.ratingSort()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.collectioView.reloadData()
+        }
     }
     
     @IBAction func tappedTopRated(_ sender: Any) {
         
-        urlService.dataRequest(page: 1, requestOptions: .topRated)
+        topRatedBnt.backgroundColor = .systemTeal
+        popularBtn.backgroundColor = .systemGray2
+        watchNowBtn.backgroundColor = .systemGray2
         
+        urlService.dataRequest(page: page, requestOptions: .topRated)
+        model.sortByType(type: .topRated)
+        model.ratingSort()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.collectioView.reloadData()
+        }
     }
     
     @IBAction func tappedWatchNow(_ sender: Any) {
         
-        urlService.dataRequest(page: 1, requestOptions: .nowPlaying)
+        watchNowBtn.backgroundColor = .systemTeal
+        topRatedBnt.backgroundColor = .systemGray2
+        popularBtn.backgroundColor = .systemGray2
         
+        urlService.dataRequest(page: page, requestOptions: .nowPlaying)
+        model.sortByType(type: .nowPlaying)
+        model.ratingSort()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.collectioView.reloadData()
+        }
     }
     
 }
@@ -148,6 +194,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        model.screenshotsLink()
+        
         detailedFilmIndex = model.arrayHelper?[indexPath.row].id
         
         performSegue(withIdentifier: "DetailFilmSegue", sender: nil)
@@ -200,6 +249,8 @@ extension MainViewController: UISearchBarDelegate{
         
         if searchBar.text?.count == 0 {
             model.arrayHelper = model.filmObjects
+            
+            
             model.ratingSort()
         }
         

@@ -32,6 +32,8 @@ class Model {
     
     let urlService = URLService()
     
+    var typeFilms: RequestOptions = .allMovie
+    
 //    var imageSet: [String] = []
     
     func showLikedItems() {
@@ -118,9 +120,18 @@ class Model {
         
     }
     
+    func sortByType(type: RequestOptions) {
+        
+        typeFilms = type
+        arrayHelper = filmObjects?.where({$0.type == type.rawValue})
+        
+        
+    }
     
     func ratingSort() {
-        arrayHelper = filmObjects?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
+        arrayHelper = arrayHelper?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
+//        arrayHelper = filmObjects?.where({$0.type == typeFilms.rawValue})
+        
         print("+++ \(String(describing: realm?.configuration.fileURL))")
         
         
