@@ -74,6 +74,12 @@ class MainViewController: UIViewController {
         model.sortByType(type: .allMovie)
         model.ratingSort()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            
+            self.model.screenshotsLink()
+            
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             
             self.collectioView.reloadData()
@@ -84,13 +90,13 @@ class MainViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         model.screenshotsLink()
+        
     }
     
     @IBAction func sortBtnAction(_ sender: Any) {
         model.sortAscending ? (sortBtn.image = UIImage(systemName: "arrow.up")) : (sortBtn.image = UIImage(systemName: "arrow.down"))
         
         model.ratingSort()
-        model.sortAscending.toggle()
         
         
         DispatchQueue.main.async {
@@ -98,6 +104,7 @@ class MainViewController: UIViewController {
             
         }
         
+        model.sortAscending.toggle()
     }
     @IBAction func tappedPopular(_ sender: Any) {
         
@@ -105,11 +112,15 @@ class MainViewController: UIViewController {
         topRatedBnt.backgroundColor = .systemGray2
         watchNowBtn.backgroundColor = .systemGray2
         
+        
+        
+        
         urlService.dataRequest(page: page, requestOptions: .allMovie)
         model.sortByType(type: .allMovie)
-        model.ratingSort()
+//        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
+            self.collectioView.setContentOffset(.zero, animated: true)
         }
     }
     
@@ -121,9 +132,10 @@ class MainViewController: UIViewController {
         
         urlService.dataRequest(page: page, requestOptions: .topRated)
         model.sortByType(type: .topRated)
-        model.ratingSort()
+//        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
+            self.collectioView.setContentOffset(.zero, animated: true)
         }
     }
     
@@ -135,9 +147,10 @@ class MainViewController: UIViewController {
         
         urlService.dataRequest(page: page, requestOptions: .nowPlaying)
         model.sortByType(type: .nowPlaying)
-        model.ratingSort()
+//        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
+            self.collectioView.setContentOffset(.zero, animated: true)
         }
     }
     

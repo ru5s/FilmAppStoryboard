@@ -125,7 +125,7 @@ class Model {
         typeFilms = type
         arrayHelper = filmObjects?.where({$0.type == type.rawValue})
         
-        
+        ratingSort()
     }
     
     func ratingSort() {

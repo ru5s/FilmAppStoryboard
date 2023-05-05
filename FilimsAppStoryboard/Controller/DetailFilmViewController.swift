@@ -69,7 +69,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
             self.ratingLabel.text = "Rating \(String(self.choosedItem?.filmRating ?? 0))"
             self.descriptionLablel.text = self.choosedItem?.about ?? ""
             
-            self.choosedItem?.isLiked ?? false ? (self.isLikeIcon.tintColor = .red) : (self.isLikeIcon.tintColor = .gray)
+            self.model.checkLikeFilm(id: self.choosedItem?.id ?? 0) ? (self.isLikeIcon.tintColor = .red) : (self.isLikeIcon.tintColor = .gray)
         }
         
         

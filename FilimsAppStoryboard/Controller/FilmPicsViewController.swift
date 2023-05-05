@@ -26,7 +26,7 @@ class FilmPicsViewController: UIViewController {
         collectionView.delegate = self
         
         let countImage = choosedItem?.screenshots.count
-        label.text = "0/" + (countImage?.formatted() ?? "")
+        label.text = "All screens - " + (countImage?.formatted() ?? "")
     }
     
     func getData(item: Int) {
