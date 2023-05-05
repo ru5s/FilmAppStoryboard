@@ -20,7 +20,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-0d-iFo">
                         <rect key="frame" x="0.0" y="0.0" width="180" height="350"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="180" id="3Tl-bT-505"/>
                             <constraint firstAttribute="height" constant="350" id="cwC-gQ-PPZ"/>
@@ -33,11 +33,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleAspectFit" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-c8-7Fl">
+                    <stackView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-c8-7Fl">
                         <rect key="frame" x="5" y="302" width="170" height="38"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2023" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raa-Qz-gZ4">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="119" height="38"/>
                                 <fontDescription key="fontDescription" name="AndaleMono" family="Andale Mono" pointSize="21"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,7 +46,7 @@
                                 <rect key="frame" x="119" y="0.0" width="51" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTf-Qe-Phk">
-                                        <rect key="frame" x="9" y="8.9999999999999982" width="33.333333333333336" height="20.333333333333329"/>
+                                        <rect key="frame" x="9" y="9" width="33" height="20"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -56,12 +56,17 @@
                                 <color key="tintColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstItem="yTf-Qe-Phk" firstAttribute="centerY" secondItem="woa-XM-u6N" secondAttribute="centerY" id="2pO-u5-pin"/>
+                                    <constraint firstItem="yTf-Qe-Phk" firstAttribute="top" secondItem="woa-XM-u6N" secondAttribute="top" constant="9" id="5UT-4u-Tne"/>
                                     <constraint firstAttribute="height" constant="38" id="BcH-4s-5Rj"/>
                                     <constraint firstItem="yTf-Qe-Phk" firstAttribute="centerX" secondItem="woa-XM-u6N" secondAttribute="centerX" id="Gie-JF-WLg"/>
+                                    <constraint firstItem="yTf-Qe-Phk" firstAttribute="leading" secondItem="woa-XM-u6N" secondAttribute="leading" constant="9" id="dK3-dx-85l"/>
                                     <constraint firstAttribute="width" constant="51" id="fZe-RW-K35"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="woa-XM-u6N" firstAttribute="centerY" secondItem="raa-Qz-gZ4" secondAttribute="centerY" id="tjr-Hn-eUc"/>
+                        </constraints>
                     </stackView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eG0-tN-a6d">
                         <rect key="frame" x="5" y="5" width="170" height="260"/>
@@ -111,6 +116,9 @@
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

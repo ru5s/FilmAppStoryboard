@@ -41,12 +41,15 @@ class MainViewController: UIViewController {
     
     let urlService = URLService()
     var page: Int = 1
+    var typeMovie: RequestOptions = .allMovie
     
     let group = DispatchGroup()
     let thread = DispatchQueue(label: "com.filmAppStoryboard")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        model.arrayHelper = model.filmObjects
         collectioView.delegate = self
         collectioView.dataSource = self
         
@@ -58,9 +61,8 @@ class MainViewController: UIViewController {
         watchNowBtn.layer.cornerRadius = 10
         
         
-        urlService.dataRequest(page: page, requestOptions: .allMovie)
-        
-        
+        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        model.sortByType(type: typeMovie)
         
         let xibCell = UINib(nibName: "MainFilmCollectionViewCell", bundle: nil)
         collectioView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
@@ -71,8 +73,7 @@ class MainViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        model.sortByType(type: .allMovie)
-        model.ratingSort()
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             
@@ -96,15 +97,16 @@ class MainViewController: UIViewController {
     @IBAction func sortBtnAction(_ sender: Any) {
         model.sortAscending ? (sortBtn.image = UIImage(systemName: "arrow.up")) : (sortBtn.image = UIImage(systemName: "arrow.down"))
         
+        model.sortByType(type: typeMovie)
+        model.sortAscending.toggle()
+        
         model.ratingSort()
         
-        
-        DispatchQueue.main.async {
-            self.collectioView.reloadData()
-            
-        }
-        
-        model.sortAscending.toggle()
+        collectioView.reloadData()
+//        DispatchQueue.main.async {
+//            self.collectioView.reloadData()
+//
+//        }
     }
     @IBAction func tappedPopular(_ sender: Any) {
         
@@ -113,10 +115,10 @@ class MainViewController: UIViewController {
         watchNowBtn.backgroundColor = .systemGray2
         
         
+        typeMovie = .allMovie
         
-        
-        urlService.dataRequest(page: page, requestOptions: .allMovie)
-        model.sortByType(type: .allMovie)
+        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
@@ -130,8 +132,10 @@ class MainViewController: UIViewController {
         popularBtn.backgroundColor = .systemGray2
         watchNowBtn.backgroundColor = .systemGray2
         
-        urlService.dataRequest(page: page, requestOptions: .topRated)
-        model.sortByType(type: .topRated)
+        typeMovie = .topRated
+        
+        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
@@ -145,8 +149,10 @@ class MainViewController: UIViewController {
         topRatedBnt.backgroundColor = .systemGray2
         popularBtn.backgroundColor = .systemGray2
         
-        urlService.dataRequest(page: page, requestOptions: .nowPlaying)
-        model.sortByType(type: .nowPlaying)
+        typeMovie = .nowPlaying
+        
+        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()

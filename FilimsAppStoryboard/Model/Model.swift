@@ -130,10 +130,7 @@ class Model {
     
     func ratingSort() {
         arrayHelper = arrayHelper?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
-//        arrayHelper = filmObjects?.where({$0.type == typeFilms.rawValue})
-        
-        print("+++ \(String(describing: realm?.configuration.fileURL))")
-        
+//        print("+++ \(String(describing: realm?.configuration.fileURL))")
         
     }
     

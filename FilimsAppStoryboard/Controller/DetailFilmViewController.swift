@@ -26,6 +26,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBOutlet var storyboardTapGesture: UITapGestureRecognizer!
     
+    @IBOutlet weak var allScreensButton: UIButton!
     var tapTouched: Bool = false
     
     var idFilm: Int?
@@ -46,6 +47,9 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        allScreensButton.layer.cornerRadius = 0
+        allScreensButton.backgroundColor = .black.withAlphaComponent(0.6)
         
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(toggleLike))
