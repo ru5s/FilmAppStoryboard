@@ -8,22 +8,18 @@
 import UIKit
 
 class FullPicViewController: UIViewController {
-
+    
+    @IBOutlet weak var fullPicImage: UIImageView!
+    var choosedImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fullPicImage.image = choosedImage
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getData(image: UIImage) {
+        choosedImage = image
     }
-    */
 
 }

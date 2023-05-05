@@ -17,6 +17,8 @@ class FilmPicsViewController: UIViewController {
     let urlService = URLService()
     let adress: String = "https://image.tmdb.org/t/p/w500/"
     
+    var fullPicImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,17 @@ class FilmPicsViewController: UIViewController {
     func getData(item: Int) {
         let predicate = NSPredicate(format: "id == \(item)")
         choosedItem = model.filmObjects?.filter(predicate).first
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "FullPickView" {
+            
+            guard let fullPicVC = segue.destination as? FullPicViewController else {return}
+            
+            guard let fullPicImage = fullPicImage else {return}
+            fullPicVC.getData(image: fullPicImage)
+        }
     }
     
 }
@@ -51,6 +64,18 @@ extension FilmPicsViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let url = URL(string: adress + (choosedItem?.screenshots[indexPath.row] ?? "")) else { return }
+        
+        urlService.getSetPoster(withUrl: url) { image in
+            self.fullPicImage = image
+        }
+        
+        self.performSegue(withIdentifier: "FullPickView", sender: Any?.self)
+        
     }
     
 }

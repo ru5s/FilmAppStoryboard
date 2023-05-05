@@ -343,7 +343,7 @@
                         <outlet property="ratingLabel" destination="UIX-zp-hZz" id="ORk-5o-RAj"/>
                         <outlet property="releaseYearLabel" destination="nvc-xS-bUe" id="V2w-AV-hOn"/>
                         <outlet property="storyboardTapGesture" destination="ZfD-4v-0TJ" id="UV0-qi-cwo"/>
-                        <segue destination="EQ2-D3-CIr" kind="show" identifier="ScreenshotFullPick" id="TER-xj-TgA"/>
+                        <segue destination="EQ2-D3-CIr" kind="show" identifier="ScreenshotFullPick" animates="NO" id="TER-xj-TgA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-lm-8CG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -430,7 +430,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sia-GI-ER7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="F3s-W7-yPY">
                     <connections>
-                        <segue destination="EQ2-D3-CIr" kind="show" identifier="FullPickView" id="kHu-dC-F9A"/>
+                        <segue destination="EQ2-D3-CIr" kind="show" identifier="FullPickView" animates="NO" id="kHu-dC-F9A"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -484,14 +484,28 @@
                     <view key="view" contentMode="scaleToFill" id="x1E-pc-RMn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ue5-du-1o1">
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1ev-gD-KBm"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="Ue5-du-1o1" firstAttribute="trailing" secondItem="1ev-gD-KBm" secondAttribute="trailing" id="QpH-Au-o77"/>
+                            <constraint firstItem="Ue5-du-1o1" firstAttribute="bottom" secondItem="1ev-gD-KBm" secondAttribute="bottom" id="TWW-md-jeM"/>
+                            <constraint firstItem="Ue5-du-1o1" firstAttribute="top" secondItem="1ev-gD-KBm" secondAttribute="top" id="VFX-Ks-6G8"/>
+                            <constraint firstItem="Ue5-du-1o1" firstAttribute="leading" secondItem="1ev-gD-KBm" secondAttribute="leading" id="rNJ-5R-hBr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kfT-53-zeV"/>
+                    <connections>
+                        <outlet property="fullPicImage" destination="Ue5-du-1o1" id="3Aa-zV-TPB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxr-Z8-66W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3336" y="3"/>
+            <point key="canvasLocation" x="3334.7826086956525" y="2.6785714285714284"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aVU-5a-JXu">
@@ -502,7 +516,7 @@
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemTealColor"/>
-                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" systemColor="systemTealColor"/>
                         </textAttributes>
@@ -521,7 +535,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TER-xj-TgA"/>
+        <segue reference="kHu-dC-F9A"/>
         <segue reference="x07-qg-Y1a"/>
     </inferredMetricsTieBreakers>
     <resources>

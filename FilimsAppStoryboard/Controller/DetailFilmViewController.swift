@@ -29,6 +29,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     var tapTouched: Bool = false
     
     var idFilm: Int?
+    var fullPicImage: UIImage?
     
     var delegate: DetailFilmVCDelegate?
     
@@ -152,6 +153,14 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
             
             filmPicsVC.getData(item: id)
         }
+        
+        if segue.identifier == "ScreenshotFullPick" {
+            
+            guard let fullPicVC = segue.destination as? FullPicViewController else {return}
+            
+            guard let fullPicImage = fullPicImage else {return}
+            fullPicVC.getData(image: fullPicImage)
+        }
     }
     
 }
@@ -178,8 +187,13 @@ extension DetailFilmViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        idFilm = model.filmObjects?[indexPath.row].id ?? 0
-        self.performSegue(withIdentifier: "DoubleTapFullPictures", sender: Any?.self)
+        guard let url = URL(string: adress + (choosedItem?.screenshots[indexPath.row] ?? "")) else { return }
+        
+        urlService.getSetPoster(withUrl: url) { image in
+            self.fullPicImage = image
+        }
+        
+        self.performSegue(withIdentifier: "ScreenshotFullPick", sender: Any?.self)
     }
     
     
