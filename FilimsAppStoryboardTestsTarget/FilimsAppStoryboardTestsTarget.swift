@@ -12,6 +12,8 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
     
     let model = Model()
     
+    let urlService = URLService()
+    
     var expectation: XCTestExpectation?
 
     override func setUpWithError() throws {
@@ -85,8 +87,6 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
         
         let testLike: Bool = true
         
-        let urlService = URLService()
-        
         urlService.dataRequest(page: 1, requestOptions: .allMovie)
         
         if model.filmObjects?.count ?? 0 > 0 {
@@ -118,7 +118,7 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
             
         } else {
             
-            print("Data base is empty")
+            XCTFail("Data base is empty")
             
         }
         

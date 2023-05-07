@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     
     let urlService = URLService()
-    var page: Int = 1
+    var page: Int = 9
     var typeMovie: RequestOptions = .allMovie
     
     let group = DispatchGroup()
@@ -73,7 +73,7 @@ class MainViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        
+        collectioView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             

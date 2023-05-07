@@ -45,7 +45,7 @@ class URLService {
                 return
             }
             
-//            print("++ \(String(data: unwrData, encoding: .utf8)) ")
+            print("++ dataRequest \(unwrData.count) ")
             
             self.parser.parseJSON(parseData: unwrData, parseError: error, type: requestOptions.rawValue)
             

@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class JSONParsingService {
+    let realm = try? Realm()
     var filmObjects: Results<FilmObject>?
     
     func parseLinkToScreenshots(parseData: Data, parseError: Error?, id: Int) {
@@ -53,7 +54,7 @@ class JSONParsingService {
             
         } catch let error {
             
-            print("+++ \(error)")
+            print("++ parseLinkToScreenshots error - \(error)")
             
         }
     }
@@ -68,7 +69,7 @@ class JSONParsingService {
             
             guard let jsonObjects = jsonObjects else {return}
             
-            try realm?.write({
+            try! realm?.write({
                 
                 for item in jsonObjects {
                     let object = FilmObject()
@@ -89,10 +90,9 @@ class JSONParsingService {
                         object.filmYear = Int(unwrFilmYear.prefix(4)) ?? 0000
                         object.filmRating = unwrFilmRating
                         object.isLiked = false
-                        object.type = type
                     }
                     
-                    
+                    object.type = type
                     
                     realm?.add(object, update: .all)
                     
@@ -102,7 +102,7 @@ class JSONParsingService {
             print(realm?.configuration.fileURL as Any)
         } catch let error {
             
-            print(error)
+            print("++ parseJSON error - \(error)")
             
         }
         

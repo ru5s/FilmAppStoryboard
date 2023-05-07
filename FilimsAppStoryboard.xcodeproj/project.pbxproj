@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3DA0027143084A57559383 /* Pods_FilimsAppStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780D6949A5C53434906AF970 /* Pods_FilimsAppStoryboard.framework */; };
 		B55D9F4729B71F0C0084885E /* MainFilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D9F4629B71F0C0084885E /* MainFilmCollectionViewCell.xib */; };
 		B55D9F4A29B735D10084885E /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D9F4829B735D10084885E /* FavoriteCollectionViewCell.swift */; };
 		B55D9F4B29B735D10084885E /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D9F4929B735D10084885E /* FavoriteCollectionViewCell.xib */; };
@@ -35,7 +36,6 @@
 		B5EA6CEA2A01088D00B1BD27 /* FilimsAppStoryboardUITestsTargetLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA6CE92A01088D00B1BD27 /* FilimsAppStoryboardUITestsTargetLaunchTests.swift */; };
 		B5FCEF3229D2BD0100890ABF /* FilmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEF3129D2BD0100890ABF /* FilmObject.swift */; };
 		B5FFEEED29B71B6B00BE1A65 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFEEEC29B71B6B00BE1A65 /* Model.swift */; };
-		F0933453D6A5E9C1DE67BCDC /* Pods_FilimsAppStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3E9BE34F88169395E20FA4 /* Pods_FilimsAppStoryboard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7847526721F10186F159740A /* Pods-FilimsAppStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
+		116B04366B1D14DA958214D3 /* Pods-FilimsAppStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.release.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.release.xcconfig"; sourceTree = "<group>"; };
+		52350E15C8CB521CD6F470C2 /* Pods-FilimsAppStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
+		780D6949A5C53434906AF970 /* Pods_FilimsAppStoryboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilimsAppStoryboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D9F4629B71F0C0084885E /* MainFilmCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainFilmCollectionViewCell.xib; path = FilimsAppStoryboard/View/MainFilmCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		B55D9F4829B735D10084885E /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B55D9F4929B735D10084885E /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -105,8 +107,6 @@
 		B5EA6CE92A01088D00B1BD27 /* FilimsAppStoryboardUITestsTargetLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilimsAppStoryboardUITestsTargetLaunchTests.swift; sourceTree = "<group>"; };
 		B5FCEF3129D2BD0100890ABF /* FilmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmObject.swift; sourceTree = "<group>"; };
 		B5FFEEEC29B71B6B00BE1A65 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		E0387FA2FD02A714D5DB5E42 /* Pods-FilimsAppStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.release.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.release.xcconfig"; sourceTree = "<group>"; };
-		FF3E9BE34F88169395E20FA4 /* Pods_FilimsAppStoryboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilimsAppStoryboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0933453D6A5E9C1DE67BCDC /* Pods_FilimsAppStoryboard.framework in Frameworks */,
+				AA3DA0027143084A57559383 /* Pods_FilimsAppStoryboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,10 +152,18 @@
 		717CF22A80606B7DE8ECAF02 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7847526721F10186F159740A /* Pods-FilimsAppStoryboard.debug.xcconfig */,
-				E0387FA2FD02A714D5DB5E42 /* Pods-FilimsAppStoryboard.release.xcconfig */,
+				52350E15C8CB521CD6F470C2 /* Pods-FilimsAppStoryboard.debug.xcconfig */,
+				116B04366B1D14DA958214D3 /* Pods-FilimsAppStoryboard.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		87B63E7CF14D3A47266ADDE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				780D6949A5C53434906AF970 /* Pods_FilimsAppStoryboard.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B56617712992BB1600D24AC2 = {
@@ -166,7 +174,7 @@
 				B5EA6CE62A01088D00B1BD27 /* FilimsAppStoryboardUITestsTarget */,
 				B566177B2992BB1600D24AC2 /* Products */,
 				717CF22A80606B7DE8ECAF02 /* Pods */,
-				F6DC3F50BF80FEFC86986704 /* Frameworks */,
+				87B63E7CF14D3A47266ADDE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,14 +288,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		F6DC3F50BF80FEFC86986704 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF3E9BE34F88169395E20FA4 /* Pods_FilimsAppStoryboard.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,11 +295,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B566178E2992BB1800D24AC2 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboard" */;
 			buildPhases = (
-				B7410D631C1F37843794770E /* [CP] Check Pods Manifest.lock */,
+				D35D687455B538A07E27F355 /* [CP] Check Pods Manifest.lock */,
 				B56617762992BB1600D24AC2 /* Sources */,
 				B56617772992BB1600D24AC2 /* Frameworks */,
 				B56617782992BB1600D24AC2 /* Resources */,
-				98DB0450596EEAABB06BAAEA /* [CP] Embed Pods Frameworks */,
+				518B910C0352981C4157389B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -479,7 +479,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		98DB0450596EEAABB06BAAEA /* [CP] Embed Pods Frameworks */ = {
+		518B910C0352981C4157389B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -496,7 +496,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B7410D631C1F37843794770E /* [CP] Check Pods Manifest.lock */ = {
+		D35D687455B538A07E27F355 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -674,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -728,7 +728,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -740,7 +740,7 @@
 		};
 		B566178F2992BB1800D24AC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7847526721F10186F159740A /* Pods-FilimsAppStoryboard.debug.xcconfig */;
+			baseConfigurationReference = 52350E15C8CB521CD6F470C2 /* Pods-FilimsAppStoryboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -773,7 +773,7 @@
 		};
 		B56617902992BB1800D24AC2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0387FA2FD02A714D5DB5E42 /* Pods-FilimsAppStoryboard.release.xcconfig */;
+			baseConfigurationReference = 116B04366B1D14DA958214D3 /* Pods-FilimsAppStoryboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -811,7 +811,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -829,7 +829,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -848,7 +848,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -867,7 +867,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -886,7 +886,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTestsTarget;
@@ -908,7 +908,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTestsTarget;
@@ -929,7 +929,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITestsTarget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -947,7 +947,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FN66JN9TVU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITestsTarget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

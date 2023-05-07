@@ -62,7 +62,7 @@ class Model {
     }
     
     func toggleLike(id: Int) {
-        print("++ \(id)")
+        print("++ toggleLike \(id)")
         
         let predicate = NSPredicate(format: "id == \(id)")
         let likeIdFilmObjects = filmObjects?.filter(predicate)
@@ -130,7 +130,7 @@ class Model {
     
     func ratingSort() {
         arrayHelper = arrayHelper?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
-//        print("+++ \(String(describing: realm?.configuration.fileURL))")
+        print("++ ratingSort \(String(describing: realm?.configuration.fileURL))")
         
     }
     
