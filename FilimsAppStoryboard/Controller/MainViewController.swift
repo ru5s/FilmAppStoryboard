@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
         
         
         urlService.dataRequest(page: page, requestOptions: typeMovie)
-        model.sortByType(type: typeMovie)
+//        model.sortByType(type: typeMovie)
         
         let xibCell = UINib(nibName: "MainFilmCollectionViewCell", bundle: nil)
         collectioView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
@@ -75,14 +75,14 @@ class MainViewController: UIViewController {
         
         collectioView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             
             self.model.screenshotsLink()
             
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            
+            self.model.sortByType(type: self.typeMovie)
             self.collectioView.reloadData()
             
         }

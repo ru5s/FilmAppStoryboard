@@ -89,13 +89,13 @@ class JSONParsingService {
                         object.about = unwrAbout
                         object.filmYear = Int(unwrFilmYear.prefix(4)) ?? 0000
                         object.filmRating = unwrFilmRating
-                        object.isLiked = false
+                        
                     }
-                    
-                    object.type = type
                     
                     realm?.add(object, update: .all)
                     
+                    object.isLiked = false
+                    object.type = type
                 }
                 
             })

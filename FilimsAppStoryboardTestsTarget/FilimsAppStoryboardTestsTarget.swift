@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import FilimsAppStoryboard
+@testable import Pods_FilimsAppStoryboard
 
 final class FilimsAppStoryboardTestsTarget: XCTestCase {
     
@@ -88,6 +89,9 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
         let testLike: Bool = true
         
         urlService.dataRequest(page: 1, requestOptions: .allMovie)
+        model.sortByType(type: .allMovie)
+        
+        print("++ test \(model.filmObjects?.count)")
         
         if model.filmObjects?.count ?? 0 > 0 {
             

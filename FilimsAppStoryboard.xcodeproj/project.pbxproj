@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA3DA0027143084A57559383 /* Pods_FilimsAppStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780D6949A5C53434906AF970 /* Pods_FilimsAppStoryboard.framework */; };
 		B55D9F4729B71F0C0084885E /* MainFilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D9F4629B71F0C0084885E /* MainFilmCollectionViewCell.xib */; };
 		B55D9F4A29B735D10084885E /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D9F4829B735D10084885E /* FavoriteCollectionViewCell.swift */; };
 		B55D9F4B29B735D10084885E /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D9F4929B735D10084885E /* FavoriteCollectionViewCell.xib */; };
@@ -36,23 +35,10 @@
 		B5EA6CEA2A01088D00B1BD27 /* FilimsAppStoryboardUITestsTargetLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA6CE92A01088D00B1BD27 /* FilimsAppStoryboardUITestsTargetLaunchTests.swift */; };
 		B5FCEF3229D2BD0100890ABF /* FilmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEF3129D2BD0100890ABF /* FilmObject.swift */; };
 		B5FFEEED29B71B6B00BE1A65 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFEEEC29B71B6B00BE1A65 /* Model.swift */; };
+		EA40D690DC5F363402F949ED /* Pods_FilimsAppStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1469DAD55102EBD3051351 /* Pods_FilimsAppStoryboard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B5EA6CC22A0103F700B1BD27 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B56617722992BB1600D24AC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B56617792992BB1600D24AC2;
-			remoteInfo = FilimsAppStoryboard;
-		};
-		B5EA6CCF2A01041500B1BD27 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B56617722992BB1600D24AC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B56617792992BB1600D24AC2;
-			remoteInfo = FilimsAppStoryboard;
-		};
 		B5EA6CDC2A01084D00B1BD27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B56617722992BB1600D24AC2 /* Project object */;
@@ -70,9 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		116B04366B1D14DA958214D3 /* Pods-FilimsAppStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.release.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.release.xcconfig"; sourceTree = "<group>"; };
-		52350E15C8CB521CD6F470C2 /* Pods-FilimsAppStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
-		780D6949A5C53434906AF970 /* Pods_FilimsAppStoryboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilimsAppStoryboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A53BAC6E4476E2E7558707 /* Pods-FilimsAppStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.release.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.release.xcconfig"; sourceTree = "<group>"; };
+		6171E3C5FCC66518E0B312BB /* Pods-FilimsAppStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilimsAppStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
 		B55D9F4629B71F0C0084885E /* MainFilmCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainFilmCollectionViewCell.xib; path = FilimsAppStoryboard/View/MainFilmCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		B55D9F4829B735D10084885E /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B55D9F4929B735D10084885E /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -98,8 +83,6 @@
 		B5CDDF7629A4B7F100E517A0 /* DetailFilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilmCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5E1224029E42A4F00D92FFE /* JSONParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingService.swift; sourceTree = "<group>"; };
 		B5E1224229E4606300D92FFE /* IsLikedFilmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsLikedFilmObjects.swift; sourceTree = "<group>"; };
-		B5EA6CBC2A0103F700B1BD27 /* FilimsAppStoryboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilimsAppStoryboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5EA6CCB2A01041500B1BD27 /* FilimsAppStoryboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilimsAppStoryboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EA6CD82A01084D00B1BD27 /* FilimsAppStoryboardTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilimsAppStoryboardTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EA6CDA2A01084D00B1BD27 /* FilimsAppStoryboardTestsTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilimsAppStoryboardTestsTarget.swift; sourceTree = "<group>"; };
 		B5EA6CE52A01088D00B1BD27 /* FilimsAppStoryboardUITestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilimsAppStoryboardUITestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +90,7 @@
 		B5EA6CE92A01088D00B1BD27 /* FilimsAppStoryboardUITestsTargetLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilimsAppStoryboardUITestsTargetLaunchTests.swift; sourceTree = "<group>"; };
 		B5FCEF3129D2BD0100890ABF /* FilmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmObject.swift; sourceTree = "<group>"; };
 		B5FFEEEC29B71B6B00BE1A65 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		EE1469DAD55102EBD3051351 /* Pods_FilimsAppStoryboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilimsAppStoryboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,21 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3DA0027143084A57559383 /* Pods_FilimsAppStoryboard.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5EA6CB92A0103F700B1BD27 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5EA6CC82A01041500B1BD27 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				EA40D690DC5F363402F949ED /* Pods_FilimsAppStoryboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,18 +122,10 @@
 		717CF22A80606B7DE8ECAF02 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				52350E15C8CB521CD6F470C2 /* Pods-FilimsAppStoryboard.debug.xcconfig */,
-				116B04366B1D14DA958214D3 /* Pods-FilimsAppStoryboard.release.xcconfig */,
+				6171E3C5FCC66518E0B312BB /* Pods-FilimsAppStoryboard.debug.xcconfig */,
+				14A53BAC6E4476E2E7558707 /* Pods-FilimsAppStoryboard.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		87B63E7CF14D3A47266ADDE0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				780D6949A5C53434906AF970 /* Pods_FilimsAppStoryboard.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B56617712992BB1600D24AC2 = {
@@ -174,7 +136,7 @@
 				B5EA6CE62A01088D00B1BD27 /* FilimsAppStoryboardUITestsTarget */,
 				B566177B2992BB1600D24AC2 /* Products */,
 				717CF22A80606B7DE8ECAF02 /* Pods */,
-				87B63E7CF14D3A47266ADDE0 /* Frameworks */,
+				B8D342338727FA5BADC80744 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,8 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				B566177A2992BB1600D24AC2 /* FilimsAppStoryboard.app */,
-				B5EA6CBC2A0103F700B1BD27 /* FilimsAppStoryboardUITests.xctest */,
-				B5EA6CCB2A01041500B1BD27 /* FilimsAppStoryboardTests.xctest */,
 				B5EA6CD82A01084D00B1BD27 /* FilimsAppStoryboardTestsTarget.xctest */,
 				B5EA6CE52A01088D00B1BD27 /* FilimsAppStoryboardUITestsTarget.xctest */,
 			);
@@ -288,6 +248,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		B8D342338727FA5BADC80744 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE1469DAD55102EBD3051351 /* Pods_FilimsAppStoryboard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,11 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B566178E2992BB1800D24AC2 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboard" */;
 			buildPhases = (
-				D35D687455B538A07E27F355 /* [CP] Check Pods Manifest.lock */,
+				2D61DF9FE2BCC0A1FF5D4861 /* [CP] Check Pods Manifest.lock */,
 				B56617762992BB1600D24AC2 /* Sources */,
 				B56617772992BB1600D24AC2 /* Frameworks */,
 				B56617782992BB1600D24AC2 /* Resources */,
-				518B910C0352981C4157389B /* [CP] Embed Pods Frameworks */,
+				482919A4895685157791BFFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,42 +277,6 @@
 			productName = FilimsAppStoryboard;
 			productReference = B566177A2992BB1600D24AC2 /* FilimsAppStoryboard.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B5EA6CBB2A0103F700B1BD27 /* FilimsAppStoryboardUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5EA6CC62A0103F700B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardUITests" */;
-			buildPhases = (
-				B5EA6CB82A0103F700B1BD27 /* Sources */,
-				B5EA6CB92A0103F700B1BD27 /* Frameworks */,
-				B5EA6CBA2A0103F700B1BD27 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B5EA6CC32A0103F700B1BD27 /* PBXTargetDependency */,
-			);
-			name = FilimsAppStoryboardUITests;
-			productName = FilimsAppStoryboardUITests;
-			productReference = B5EA6CBC2A0103F700B1BD27 /* FilimsAppStoryboardUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		B5EA6CCA2A01041500B1BD27 /* FilimsAppStoryboardTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5EA6CD12A01041500B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardTests" */;
-			buildPhases = (
-				B5EA6CC72A01041500B1BD27 /* Sources */,
-				B5EA6CC82A01041500B1BD27 /* Frameworks */,
-				B5EA6CC92A01041500B1BD27 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B5EA6CD02A01041500B1BD27 /* PBXTargetDependency */,
-			);
-			name = FilimsAppStoryboardTests;
-			productName = FilimsAppStoryboardTests;
-			productReference = B5EA6CCB2A01041500B1BD27 /* FilimsAppStoryboardTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B5EA6CD72A01084D00B1BD27 /* FilimsAppStoryboardTestsTarget */ = {
 			isa = PBXNativeTarget;
@@ -395,14 +327,6 @@
 					B56617792992BB1600D24AC2 = {
 						CreatedOnToolsVersion = 14.2;
 					};
-					B5EA6CBB2A0103F700B1BD27 = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = B56617792992BB1600D24AC2;
-					};
-					B5EA6CCA2A01041500B1BD27 = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = B56617792992BB1600D24AC2;
-					};
 					B5EA6CD72A01084D00B1BD27 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = B56617792992BB1600D24AC2;
@@ -427,8 +351,6 @@
 			projectRoot = "";
 			targets = (
 				B56617792992BB1600D24AC2 /* FilimsAppStoryboard */,
-				B5EA6CBB2A0103F700B1BD27 /* FilimsAppStoryboardUITests */,
-				B5EA6CCA2A01041500B1BD27 /* FilimsAppStoryboardTests */,
 				B5EA6CD72A01084D00B1BD27 /* FilimsAppStoryboardTestsTarget */,
 				B5EA6CE42A01088D00B1BD27 /* FilimsAppStoryboardUITestsTarget */,
 			);
@@ -445,20 +367,6 @@
 				B56617872992BB1800D24AC2 /* Assets.xcassets in Resources */,
 				B56617852992BB1600D24AC2 /* Main.storyboard in Resources */,
 				B55D9F4B29B735D10084885E /* FavoriteCollectionViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5EA6CBA2A0103F700B1BD27 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5EA6CC92A01041500B1BD27 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,24 +387,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		518B910C0352981C4157389B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D35D687455B538A07E27F355 /* [CP] Check Pods Manifest.lock */ = {
+		2D61DF9FE2BCC0A1FF5D4861 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -516,6 +407,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		482919A4895685157791BFFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FilimsAppStoryboard/Pods-FilimsAppStoryboard-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -548,20 +456,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5EA6CB82A0103F700B1BD27 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5EA6CC72A01041500B1BD27 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B5EA6CD42A01084D00B1BD27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -582,16 +476,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B5EA6CC32A0103F700B1BD27 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B56617792992BB1600D24AC2 /* FilimsAppStoryboard */;
-			targetProxy = B5EA6CC22A0103F700B1BD27 /* PBXContainerItemProxy */;
-		};
-		B5EA6CD02A01041500B1BD27 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B56617792992BB1600D24AC2 /* FilimsAppStoryboard */;
-			targetProxy = B5EA6CCF2A01041500B1BD27 /* PBXContainerItemProxy */;
-		};
 		B5EA6CDD2A01084D00B1BD27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B56617792992BB1600D24AC2 /* FilimsAppStoryboard */;
@@ -740,7 +624,7 @@
 		};
 		B566178F2992BB1800D24AC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52350E15C8CB521CD6F470C2 /* Pods-FilimsAppStoryboard.debug.xcconfig */;
+			baseConfigurationReference = 6171E3C5FCC66518E0B312BB /* Pods-FilimsAppStoryboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -773,7 +657,7 @@
 		};
 		B56617902992BB1800D24AC2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 116B04366B1D14DA958214D3 /* Pods-FilimsAppStoryboard.release.xcconfig */;
+			baseConfigurationReference = 14A53BAC6E4476E2E7558707 /* Pods-FilimsAppStoryboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -801,80 +685,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		B5EA6CC42A0103F700B1BD27 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FN66JN9TVU;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FilimsAppStoryboard;
-			};
-			name = Debug;
-		};
-		B5EA6CC52A0103F700B1BD27 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FN66JN9TVU;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FilimsAppStoryboard;
-			};
-			name = Release;
-		};
-		B5EA6CD22A01041500B1BD27 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FN66JN9TVU;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilimsAppStoryboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FilimsAppStoryboard";
-			};
-			name = Debug;
-		};
-		B5EA6CD32A01041500B1BD27 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FN66JN9TVU;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uz.IsmailovRuslan.FilimsAppStoryboardTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilimsAppStoryboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FilimsAppStoryboard";
 			};
 			name = Release;
 		};
@@ -975,24 +785,6 @@
 			buildConfigurations = (
 				B566178F2992BB1800D24AC2 /* Debug */,
 				B56617902992BB1800D24AC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5EA6CC62A0103F700B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5EA6CC42A0103F700B1BD27 /* Debug */,
-				B5EA6CC52A0103F700B1BD27 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5EA6CD12A01041500B1BD27 /* Build configuration list for PBXNativeTarget "FilimsAppStoryboardTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5EA6CD22A01041500B1BD27 /* Debug */,
-				B5EA6CD32A01041500B1BD27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
