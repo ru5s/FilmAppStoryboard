@@ -110,6 +110,7 @@ class MainViewController: UIViewController {
             print("+++ group finish")
             self.model.sortByType(type: self.typeMovie)
             self.collectioView.reloadData()
+            self.model.screenshotsLink()
         }))
         
     }
@@ -137,7 +138,13 @@ class MainViewController: UIViewController {
         
         typeMovie = .allMovie
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in })
+        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in
+            if bool == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.model.screenshotsLink()
+                }
+            }
+        })
         model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -154,7 +161,15 @@ class MainViewController: UIViewController {
         
         typeMovie = .topRated
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in })
+        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in
+            
+            if bool == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.model.screenshotsLink()
+                }
+            }
+            
+        })
         model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -171,9 +186,16 @@ class MainViewController: UIViewController {
         
         typeMovie = .nowPlaying
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in })
+        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in
+            if bool == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.model.screenshotsLink()
+                }
+            }
+        })
+
         model.sortByType(type: typeMovie)
-//        model.ratingSort()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
             self.collectioView.setContentOffset(.zero, animated: true)

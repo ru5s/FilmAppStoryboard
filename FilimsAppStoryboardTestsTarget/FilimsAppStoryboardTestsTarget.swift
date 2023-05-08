@@ -88,8 +88,8 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
         
         let testLike: Bool = true
         
-        urlService.dataRequest(page: 1, requestOptions: .allMovie)
-        model.sortByType(type: .allMovie)
+//        urlService.dataRequest(page: 1, requestOptions: .allMovie)
+//        model.sortByType(type: .allMovie)
         
         print("++ test \(model.filmObjects?.count)")
         
