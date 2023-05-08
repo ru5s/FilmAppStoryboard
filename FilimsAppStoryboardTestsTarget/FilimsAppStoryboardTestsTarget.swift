@@ -88,8 +88,7 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
         
         let testLike: Bool = true
         
-//        urlService.dataRequest(page: 1, requestOptions: .allMovie)
-//        model.sortByType(type: .allMovie)
+        model.addTestObjectToDataBase()
         
         print("++ test \(model.filmObjects?.count)")
         
@@ -120,8 +119,10 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
                 XCTAssertFalse(methodCheck, "somthing wrong with method check like film")
             }
             
-        } else {
+            model.removeTestObjectFromDataBase()
             
+        } else {
+            model.removeTestObjectFromDataBase()
             XCTFail("Data base is empty")
             
         }

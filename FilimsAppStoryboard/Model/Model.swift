@@ -139,3 +139,38 @@ class Model {
         arrayHelper = filmObjects?.filter(predicate)
     }
 }
+
+
+extension Model {
+    
+    func addTestObjectToDataBase() {
+        
+        for i in 0...10 {
+            let testObject = FilmObject()
+            try! realm?.write({
+                
+                testObject.id = i
+                testObject.filmTitle = "test #\(i)"
+                testObject.filmYear = 0000
+                testObject.filmRating = 10.0
+                testObject.isLiked = false
+                realm?.add(testObject, update: .all)
+            })
+            
+        }
+        
+    }
+    
+    func removeTestObjectFromDataBase() {
+        
+        for i in 0...10 {
+            let predicate = NSPredicate(format: "id == \(i)")
+            let testObject = FilmObject()
+            guard let removeObject = filmObjects?.filter(predicate).first else {return}
+            try! realm?.write({
+                realm?.delete(removeObject)
+            })
+        }
+        
+    }
+}
