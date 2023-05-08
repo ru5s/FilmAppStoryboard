@@ -29,7 +29,7 @@ class URLService {
     
     var imageCache = NSCache <NSString, UIImage>()
     
-    func dataRequest(page: Int = 1, requestOptions: RequestOptions = .allMovie) {
+    func dataRequest(page: Int = 1, requestOptions: RequestOptions = .allMovie, completition: @escaping (Bool) -> ()) {
         
         var page = "&page=\(page)"
         
@@ -42,12 +42,19 @@ class URLService {
             guard let unwrData = data,
                   (response as? HTTPURLResponse)?.statusCode == 200,
                   error == nil else {
+                completition(false)
                 return
             }
             
             print("++ dataRequest \(unwrData.count) ")
             
-            self.parser.parseJSON(parseData: unwrData, parseError: error, type: requestOptions.rawValue)
+            self.parser.parseJSON(parseData: unwrData, parseError: error, type: requestOptions.rawValue, completition: { bool in
+                
+                if bool == true {
+                    completition(true)
+                }
+            })
+            
             
         }
         task.resume()

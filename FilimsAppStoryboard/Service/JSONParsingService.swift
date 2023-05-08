@@ -59,7 +59,7 @@ class JSONParsingService {
         }
     }
     
-    func parseJSON(parseData: Data, parseError: Error?, type: String) {
+    func parseJSON(parseData: Data, parseError: Error?, type: String, completition: @escaping (Bool) -> ()) {
         
         do {
             
@@ -97,11 +97,12 @@ class JSONParsingService {
                     object.isLiked = false
                     object.type = type
                 }
-                
+                completition(true)
             })
+            
             print(realm?.configuration.fileURL as Any)
         } catch let error {
-            
+            completition(false)
             print("++ parseJSON error - \(error)")
             
         }

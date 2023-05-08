@@ -60,9 +60,8 @@ class MainViewController: UIViewController {
         watchNowBtn.backgroundColor = .systemGray2
         watchNowBtn.layer.cornerRadius = 10
         
+        fetchData()
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie)
-//        model.sortByType(type: typeMovie)
         
         let xibCell = UINib(nibName: "MainFilmCollectionViewCell", bundle: nil)
         collectioView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
@@ -73,7 +72,7 @@ class MainViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        collectioView.reloadData()
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             
@@ -82,7 +81,7 @@ class MainViewController: UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.model.sortByType(type: self.typeMovie)
+//            self.model.sortByType(type: self.typeMovie)
             self.collectioView.reloadData()
             
         }
@@ -91,6 +90,27 @@ class MainViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         model.screenshotsLink()
+        
+    }
+    
+    func fetchData() {
+        group.enter()
+        DispatchQueue.main.async {
+            print("+++ group enter")
+            self.urlService.dataRequest(page: self.page, requestOptions: self.typeMovie, completition: { bool in
+                
+                if bool == true {
+                    self.group.leave()
+                }
+            })
+            
+        }
+        
+        group.notify(queue: .main, work: .init(block: {
+            print("+++ group finish")
+            self.model.sortByType(type: self.typeMovie)
+            self.collectioView.reloadData()
+        }))
         
     }
     
@@ -117,7 +137,7 @@ class MainViewController: UIViewController {
         
         typeMovie = .allMovie
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in })
         model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -134,7 +154,7 @@ class MainViewController: UIViewController {
         
         typeMovie = .topRated
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in })
         model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -151,7 +171,7 @@ class MainViewController: UIViewController {
         
         typeMovie = .nowPlaying
         
-        urlService.dataRequest(page: page, requestOptions: typeMovie)
+        urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in })
         model.sortByType(type: typeMovie)
 //        model.ratingSort()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
