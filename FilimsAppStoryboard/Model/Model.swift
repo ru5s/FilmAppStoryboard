@@ -173,4 +173,38 @@ extension Model {
         }
         
     }
+    
+    func addTestObjectToDataBaseSpecial(_ filmToTest: FilmObject) {
+            
+            let testObject = FilmObject()
+            try! realm?.write({
+                
+                testObject.id = filmToTest.id
+                testObject.isLiked = filmToTest.isLiked
+                realm?.add(testObject, update: .all)
+            })
+            print("+++ testObject\(testObject.id)")
+            print("+++ \(realm?.configuration.fileURL)")
+            
+        }
+        
+        func removeTestObjectFromDataBaseSpecial(_ filmToTest: FilmObject) {
+            
+            let predicate = NSPredicate(format: "id == \(filmToTest.id)")
+            let testObject = FilmObject()
+            guard let removeObject = filmObjects?.filter(predicate).first else {return}
+            try! realm?.write({
+                realm?.delete(removeObject)
+            })
+        }
+        
+        func firstObjectByID(_ id: Int) -> FilmObject? {
+            
+            let predicate = NSPredicate(format: "id == \(id)")
+            let firstObjet = filmObjects?.filter(predicate).first
+            guard let firstObjet = firstObjet else {return nil}
+            
+            return firstObjet
+            
+        }
 }

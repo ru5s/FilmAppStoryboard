@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import FilimsAppStoryboard
 
 final class FilimsAppStoryboardUITestsTarget: XCTestCase {
 

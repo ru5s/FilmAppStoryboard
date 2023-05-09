@@ -85,48 +85,47 @@ final class FilimsAppStoryboardTestsTarget: XCTestCase {
     }
 
     func testToggleLikeModel() throws {
-        
-        let testLike: Bool = true
-        
-        model.addTestObjectToDataBase()
-        
-        print("++ test \(model.filmObjects?.count)")
-        
-        if model.filmObjects?.count ?? 0 > 0 {
             
-            let firstObject = model.filmObjects?.first
+            let testLike: Bool = true
             
-            guard let id: Int = firstObject?.id else { return XCTFail("id not be found")}
+            let firstObject = FilmObject()
+            firstObject.id = 1
+            firstObject.isLiked = false
             
-            if firstObject?.isLiked == false {
+            model.addTestObjectToDataBaseSpecial(firstObject)
+            
+            let item = model.firstObjectByID(firstObject.id)
+            
+            guard let id: Int = item?.id else { return XCTFail("id not be found")}
+            
+            if item?.isLiked == false {
                 
                 model.toggleLike(id: id)
                 
-                XCTAssertEqual(firstObject?.isLiked, testLike, "something wrong with method toggle like")
+                let likedItem = model.firstObjectByID(id)
                 
-                let methodCheck = model.checkLikeFilm(id: id)
+                XCTAssertEqual(likedItem?.isLiked, testLike, "something wrong with method toggle like")
+                
+                guard let likedId: Int = likedItem?.id else { return XCTFail("id not be found")}
+                
+                let methodCheck = model.checkLikeFilm(id: likedId)
                 
                 XCTAssertTrue(methodCheck, "somthing wrong with method check like film")
                 
             }
             
-            if firstObject?.isLiked == true {
+            if item?.isLiked == true {
                 
                 model.toggleLike(id: id)
                 
                 let methodCheck = model.checkLikeFilm(id: id)
                 
                 XCTAssertFalse(methodCheck, "somthing wrong with method check like film")
+                
             }
-            
-            model.removeTestObjectFromDataBase()
-            
-        } else {
-            model.removeTestObjectFromDataBase()
-            XCTFail("Data base is empty")
+
+            model.removeTestObjectFromDataBaseSpecial(firstObject)
             
         }
-        
-    }
 
 }
