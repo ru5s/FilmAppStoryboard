@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Модель json для получения фильмов
 class MovieList: Codable {
     var page: Int?
     var results: [Result]?
@@ -19,6 +20,7 @@ class MovieList: Codable {
     }
 }
 
+//Сами фильмы
 class Result: Codable {
     var id: Int?
     var original_title: String?
@@ -27,31 +29,17 @@ class Result: Codable {
     var overview: String?
     var vote_average: Double?
     var backdrop_path: String?
-//    var screenshots: [ScreensLink]
 }
 
+//Получение скриншотов
 class AllScreens: Codable {
     var backdrops: [ScreensLink]
 }
 
+//линк для конкретнй картинки
 class ScreensLink: Codable {
     var aspect_ratio: Double?
     var height: Int
     var file_path: String?
     var width: Int
 }
-
-class TestModel {
-    var testPic: String?
-    var testTitle: String?
-    var testYear: String?
-    var testRating: String?
-    
-    init(testPic: String? = nil, testTitle: String? = nil, testYear: String? = nil, testRating: String? = nil) {
-        self.testPic = testPic
-        self.testTitle = testTitle
-        self.testYear = testYear
-        self.testRating = testRating
-    }
-}
-

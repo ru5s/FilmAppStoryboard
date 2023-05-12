@@ -301,7 +301,7 @@
                                     <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="openAllScreenshots:" destination="car-Bs-c28" eventType="touchUpInside" id="vRZ-Ob-fCm"/>
+                                    <action selector="openAllScreenshots:" destination="car-Bs-c28" eventType="touchUpInside" id="xnK-S5-Mlm"/>
                                     <segue destination="ALJ-oz-8h0" kind="show" identifier="FilmPicsSegue" id="IOS-1F-ii5"/>
                                 </connections>
                             </button>

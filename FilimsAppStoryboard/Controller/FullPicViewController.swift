@@ -10,14 +10,19 @@ import UIKit
 class FullPicViewController: UIViewController {
     
     @IBOutlet weak var fullPicImage: UIImageView!
+    
+    //избранное изображение
     var choosedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //передача изображения в оутлет
         fullPicImage.image = choosedImage
-        // Do any additional setup after loading the view.
+        
     }
     
+    //метод получения изображения с предыдущего вью
     func getData(image: UIImage) {
         choosedImage = image
     }

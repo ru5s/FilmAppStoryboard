@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+//Модель объекта Реалм базы данных для избранных фильмов
 class IsLikedFilmObjects: Object {
     
     @objc dynamic var id: Int = 0

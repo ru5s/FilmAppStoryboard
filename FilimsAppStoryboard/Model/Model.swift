@@ -8,87 +8,72 @@
 import Foundation
 import RealmSwift
 
+//работа с моделью данных по всему приложению
 class Model {
-    
+    //подключение к базе данных реалм
     let realm = try? Realm()
-    
+    //получение списка фильмов
     var filmObjects: Results<FilmObject>? {
         return realm?.objects(FilmObject.self)
     }
-    
+    //получение списка избранных фильмов
     var likedFilms: Results<IsLikedFilmObjects>? {
         return realm?.objects(IsLikedFilmObjects.self)
     }
-    
-//    var newTestArray: [Item] = []
-    
+    //вспомогательный массив для работы с фильтрами и чтоб не изменять основной массив из базы данных
     var arrayHelper: Results<FilmObject>?
-    
+    //булевая переменная для работы с фильтрацией по рейтингу
     var sortAscending: Bool = false
-    
-    var likedArrayItem: Results<IsLikedFilmObjects>?
-    
+    //переменная для одного фильма
     var detailFilm: FilmObject?
-    
+    //менеджер работы с апи
     let urlService = URLService()
     
-    var typeFilms: RequestOptions = .allMovie
-    
-//    var imageSet: [String] = []
-    
-    func showLikedItems() {
-        let predicate = NSPredicate(format: "isLiked == true")
-        likedArrayItem = likedFilms?.filter(predicate)
-        
-    }
-    
+    //метод поиска в базе данных определенного фильма по id
     func detailFilm(id: Int){
         let film = filmObjects?.filter("id == \(id)")
         detailFilm = film?.first
-        
     }
     
+    //метод проверки фильма на наличие его в избранных и возврата булевого ответа
     func checkLikeFilm(id: Int) -> Bool {
-        
         let predicate = NSPredicate(format: "id == \(id)")
-        
         let likeId = likedFilms?.filter(predicate).first
         
-//        return ((likeId?.isLiked) != nil)
         if likeId?.isLiked == true {
             return true
         }
+        
         return false
     }
     
+    //метод нажатие на кнопку избранных
     func toggleLike(id: Int) {
-        print("++ toggleLike \(id)")
-        
+        //условие на поиск по id
         let predicate = NSPredicate(format: "id == \(id)")
-        let likeIdFilmObjects = filmObjects?.filter(predicate)
-        let likedFilm = likeIdFilmObjects?.first
-        
+        //поиск фильма в общем списке в базе данных
+        let likedFilm = filmObjects?.filter(predicate).first
+        //поиск фильма в списке избранных в базе данных
         let likeIdIsLikedFilmObjects = likedFilms?.filter(predicate).first
-        
+        //проверка на наличие данных
         guard let likedFilm = likedFilm else {return}
-        
+        //проверка если есть фильм в избранных в общем списке или есть фильм в избранных
         if likedFilm.isLiked || ((likeIdIsLikedFilmObjects?.isLiked) != nil) {
-            
-//            let predicate = NSPredicate(format: "id == \(id)")
+            //то его нужно сначала указать по id
             guard let unlike = likedFilms?.filter(predicate).first else { return }
-            
+            //потом убрать из избранных
             try! realm?.write({
                 realm?.delete(unlike)
-                
+                //а так же в общем списке перевести булевую переменную
                 likedFilm.isLiked = false
             })
-            
+        //если условия выше не выполнились то тогда
         } else {
-            
+            //попытаться сохранить в базу данных избрынных фильмов
             try! realm?.write({
-                
+                //создание объекта базы избранных
                 let likeObject = IsLikedFilmObjects()
-                
+                //сохранение по пунктам
                 likeObject.id = likedFilm.id
                 likeObject.filmPic = likedFilm.filmPic
                 likeObject.filmTitle = likedFilm.filmTitle
@@ -97,114 +82,100 @@ class Model {
                 likeObject.filmRating = likedFilm.filmRating
                 likeObject.filmScreens.append(objectsIn: likedFilm.screenshots)
                 likeObject.isLiked = true
-                
+                //изменения булевой переменной в фильме в основном списке базы данных
                 likedFilm.isLiked = true
-             
+                //сохранение фильма в базу избранных
                 realm?.add(likeObject, update: .all)
+                //добавление типа фильма в базе избранных (на будущее)
+                likeObject.type = likedFilm.type
             })
             
         }
         
     }
     
+    //метод получения линка скриншотов и сохранения их в базу данных общего списка
     func screenshotsLink(){
+        //проверка на наличие доступа к базе
+        guard let filmObjects = filmObjects else {return}
         
-        let films = realm?.objects(FilmObject.self)
-        
-        guard let films = films else {return}
-        
-        for i in films {
+        //отработка проверки по каждому фильму
+        for i in filmObjects {
+            //запрос на менеджер работы с апи
             urlService.getScreenshots(i.id)
         }
-        
-        
     }
     
+    //метод сортировки по типу
     func sortByType(type: RequestOptions) {
-        
-        typeFilms = type
+        //вспомогательных массив для фильтрации по типу
         arrayHelper = filmObjects?.where({$0.type == type.rawValue})
-        
+        //запуск сортировки по рейтингу
         ratingSort()
     }
     
+    //метод сортировки по рейтингу
     func ratingSort() {
-        arrayHelper = arrayHelper?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
-        print("++ ratingSort \(String(describing: realm?.configuration.fileURL))")
         
+        //этот же массив сортируем по рейтингу согласно булевой переменной sortAscending
+        arrayHelper = arrayHelper?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
     }
     
+    //метод поиска фильма через строку поиска
     func search(searchTextValue: String) {
+        //условия поиска
         let predicate = NSPredicate(format: "filmTitle CONTAINS [c]%@", searchTextValue)
+        //фильтрация согласно условию
         arrayHelper = filmObjects?.filter(predicate)
     }
 }
 
-
+//расширение для работы с тестами
 extension Model {
     
-    func addTestObjectToDataBase() {
-        
-        for i in 0...10 {
-            let testObject = FilmObject()
-            try! realm?.write({
-                
-                testObject.id = i
-                testObject.filmTitle = "test #\(i)"
-                testObject.filmYear = 0000
-                testObject.filmRating = 10.0
-                testObject.isLiked = false
-                realm?.add(testObject, update: .all)
-            })
-            
-        }
-        
-    }
-    
-    func removeTestObjectFromDataBase() {
-        
-        for i in 0...10 {
-            let predicate = NSPredicate(format: "id == \(i)")
-            let testObject = FilmObject()
-            guard let removeObject = filmObjects?.filter(predicate).first else {return}
-            try! realm?.write({
-                realm?.delete(removeObject)
-            })
-        }
-        
-    }
-    
+    //метод добавления тестового элемента
     func addTestObjectToDataBaseSpecial(_ filmToTest: FilmObject) {
             
-            let testObject = FilmObject()
-            try! realm?.write({
+        let testObject = FilmObject()
+        
+        try! realm?.write({
                 
                 testObject.id = filmToTest.id
                 testObject.isLiked = filmToTest.isLiked
                 realm?.add(testObject, update: .all)
             })
-            print("+++ testObject\(testObject.id)")
-            print("+++ \(realm?.configuration.fileURL)")
-            
-        }
+    }
+    
+    //метод удаления тестового элемента
+    func removeTestObjectFromDataBaseSpecial(_ filmToTest: FilmObject) {
         
-        func removeTestObjectFromDataBaseSpecial(_ filmToTest: FilmObject) {
-            
-            let predicate = NSPredicate(format: "id == \(filmToTest.id)")
-            let testObject = FilmObject()
-            guard let removeObject = filmObjects?.filter(predicate).first else {return}
-            try! realm?.write({
-                realm?.delete(removeObject)
-            })
-        }
+        let predicate = NSPredicate(format: "id == \(filmToTest.id)")
+        guard let removeObject = filmObjects?.filter(predicate).first else {return}
         
-        func firstObjectByID(_ id: Int) -> FilmObject? {
-            
-            let predicate = NSPredicate(format: "id == \(id)")
-            let firstObjet = filmObjects?.filter(predicate).first
-            guard let firstObjet = firstObjet else {return nil}
-            
-            return firstObjet
-            
-        }
+        try! realm?.write({
+            realm?.delete(removeObject)
+        })
+        
+    }
+    
+    //поиск и передача тестовго элемента по id
+    func firstObjectByID(_ id: Int) -> FilmObject? {
+        
+        let predicate = NSPredicate(format: "id == \(id)")
+        let firstObjet = filmObjects?.filter(predicate).first
+        guard let firstObjet = firstObjet else {return nil}
+        
+        return firstObjet
+        
+    }
+    
+    //метод для тестирования url и даты его даты
+    func sendUrlToTest() -> URL? {
+        
+    let type: RequestOptions = .allMovie
+        guard let url: URL = URL(string: "\(urlService.adress)3/movie/\(type.rawValue)?\(urlService.apiKey)&language=en-US&1") else { return URL(string: "")}
+        
+        return url
+    }
+    
 }
