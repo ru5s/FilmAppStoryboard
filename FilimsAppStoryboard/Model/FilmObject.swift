@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+//Модель объекта Реалм базы данных для входящих фильмов с апи
 class FilmObject: Object {
     
     @objc dynamic var id: Int = 0
@@ -15,10 +16,10 @@ class FilmObject: Object {
     @objc dynamic var filmTitle: String = ""
     @objc dynamic var filmYear: Int = 0000
     @objc dynamic var filmRating: Double = 0.0
-//    @objc dynamic var filmScreens: String = ""
     dynamic var screenshots: List<String> = List<String>()
     @objc dynamic var about: String = ""
     @objc dynamic var isLiked: Bool = false
+    @objc dynamic var type: String = ""
     
     override class func primaryKey() -> String? {
         return "id"

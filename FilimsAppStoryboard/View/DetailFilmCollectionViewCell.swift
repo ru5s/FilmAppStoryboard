@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//кастомная ячейка с коллекции скриншотов с вью подробнее о фильме
 class DetailFilmCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var DetailFilmImages: UIImageView!
