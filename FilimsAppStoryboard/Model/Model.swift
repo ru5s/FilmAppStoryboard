@@ -94,24 +94,6 @@ class Model {
         
     }
     
-//    //метод получения линка скриншотов и сохранения их в базу данных общего списка
-//    func screenshotsLink(){
-//        //проверка на наличие доступа к базе
-//        guard let filmObjects = filmObjects else {return}
-//
-//        //отработка проверки по каждому фильму
-//        for i in filmObjects {
-//            //запрос на менеджер работы с апи
-//            urlService.getScreenshots(i.id, completition: {error in
-//                if let error = error {
-//                    print("++ urlService.getScreenshots error")
-//                } else {
-//
-//                }
-//            })
-//        }
-//    }
-    
     func personalScrenshots(id: Int, completition: @escaping (Bool) -> ()) {
         urlService.getScreenshots(id, completition: {error in
             if let error = error {

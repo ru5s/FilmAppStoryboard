@@ -85,12 +85,6 @@ class MainViewController: UIViewController {
         //запрет на сворачивание когда идет скролл
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        //дополнительная защита для обновления коллекции
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.collectioView.reloadData()
-            
-        }
-        
     }
     
     override func viewDidLayoutSubviews() {
