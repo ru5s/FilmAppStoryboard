@@ -85,11 +85,6 @@ class MainViewController: UIViewController {
         //запрет на сворачивание когда идет скролл
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        //в качестве дополнительной защиты поставил прогрузку скриншотов с задержкой времени, в методе стоит защита от повторной записи и если данные уже появились то повторно записывать не будет
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.model.screenshotsLink()
-        }
-        
         //дополнительная защита для обновления коллекции
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.collectioView.reloadData()
@@ -99,41 +94,27 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        
-        //получение скриншотов при скролле
-        model.screenshotsLink()
 
     }
     
     func fetchData() {
         
-        //подключение группы
-        group.enter()
         DispatchQueue.main.async {
-            
             //получение данных в асинхронном режиме, в методе стоит сбегающее замыкание на то что данные уже в базе данных
             self.urlService.dataRequest(page: self.page, requestOptions: self.typeMovie, completition: { bool in
                 
                 if bool == true {
-                    //выход из группы
-                    self.group.leave()
+                    
+                    DispatchQueue.main.async {
+                        self.model.sortByType(type: self.typeMovie)
+                        
+                        //обновление коллекции после
+                        self.collectioView.reloadData()
+                    }
                 }
             })
             
         }
-        
-        //после выходы из группы выполняются необходимые методы
-        group.notify(queue: .main, work: .init(block: {
-            
-            //метод сортировки по типу
-            self.model.sortByType(type: self.typeMovie)
-            
-            //обновление коллекции после
-            self.collectioView.reloadData()
-            
-            //получение скриншотов к фильмам
-            self.model.screenshotsLink()
-        }))
         
     }
     
@@ -169,23 +150,18 @@ class MainViewController: UIViewController {
         //запрос к апи для получения данных
         urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in
             if bool == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                DispatchQueue.main.async {
+                    //сортировка фильмов по типу
+                    self.model.sortByType(type: self.typeMovie)
                     
-                    //получение скриншотов для фильмов
-                    self.model.screenshotsLink()
+                    self.collectioView.reloadData()
+                    
+                    //прокручивание коллекции в самый верх при нажатии
+                    self.collectioView.setContentOffset(.zero, animated: true)
                 }
             }
         })
         
-        //сортировка фильмов по типу
-        model.sortByType(type: typeMovie)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.collectioView.reloadData()
-            
-            //прокручивание коллекции в самый верх при нажатии
-            self.collectioView.setContentOffset(.zero, animated: true)
-        }
     }
     
     //кнопка top rated
@@ -200,18 +176,20 @@ class MainViewController: UIViewController {
         urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in
             
             if bool == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.model.screenshotsLink()
+                DispatchQueue.main.async {
+                    //сортировка фильмов по типу
+                    self.model.sortByType(type: self.typeMovie)
+                    
+                    self.collectioView.reloadData()
+                    
+                    //прокручивание коллекции в самый верх при нажатии
+                    self.collectioView.setContentOffset(.zero, animated: true)
+                    
                 }
             }
             
         })
-        model.sortByType(type: typeMovie)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.collectioView.reloadData()
-            self.collectioView.setContentOffset(.zero, animated: true)
-        }
+        
     }
     
     //кнопка watch now
@@ -226,17 +204,17 @@ class MainViewController: UIViewController {
         urlService.dataRequest(page: page, requestOptions: typeMovie, completition: {bool in
             if bool == true {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.model.screenshotsLink()
+                    //сортировка фильмов по типу
+                    self.model.sortByType(type: self.typeMovie)
+                    
+                    self.collectioView.reloadData()
+                    
+                    //прокручивание коллекции в самый верх при нажатии
+                    self.collectioView.setContentOffset(.zero, animated: true)
                 }
             }
         })
 
-        model.sortByType(type: typeMovie)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.collectioView.reloadData()
-            self.collectioView.setContentOffset(.zero, animated: true)
-        }
     }
     
 }
@@ -304,9 +282,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //запрос на скриншоты при нажатии на фильм
-        model.screenshotsLink()
+
+        guard let idFilm = self.model.arrayHelper?[indexPath.row].id else {return}
         
         //получение id для последующей передачи его во вью detailed film
         detailedFilmIndex = model.arrayHelper?[indexPath.row].id

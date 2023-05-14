@@ -95,9 +95,11 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         framesMovieCollectionView.delegate = self
         framesMovieCollectionView.dataSource = self
         
-        DispatchQueue.main.async {
-            self.framesMovieCollectionView.reloadData()
-        }
+//        DispatchQueue.main.async {
+        framesMovieCollectionView.reloadData()
+//        }
+        
+        
     }
     
     //без пустого экшена кнопки "показать все скриншоты в отдельном вью" выходит ошибка передачи данных
@@ -122,6 +124,17 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         choosedItem = model.filmObjects?.where({ film in
             film.id == item
         }).first
+
+        guard let id = choosedItem?.id else {return}
+        //запрос на скриншоты при нажатии на фильм
+        model.personalScrenshots(id: id, completition: {bool in
+            if bool == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.framesMovieCollectionView.reloadData()
+                }
+                
+            }
+        })
         
     }
     

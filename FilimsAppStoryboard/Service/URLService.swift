@@ -48,22 +48,26 @@ class URLService {
                 completition(false)
                 return
             }
+            print("++ data - \(unwrData.count)")
             
-            //отправка данных в парсер с сохранением всего в базу данных и получение ответа при достижении результата
-            self.parser.parseJSON(parseData: unwrData, parseError: error, type: requestOptions.rawValue, completition: { bool in
-                
-                //если результат пришел то отправить сигнал
-                if bool == true {
-                    completition(true)
-                }
-            })
+            DispatchQueue.main.async {
+                //отправка данных в парсер с сохранением всего в базу данных и получение ответа при достижении результата
+                self.parser.parseJSON(parseData: unwrData, parseError: error, type: requestOptions.rawValue, completition: { bool in
+                    
+                    //если результат пришел то отправить сигнал
+                    if bool == true {
+                        completition(true)
+                    }
+                })
+            }
+            
             
         }
         task.resume()
     }
     
     //метод получения скриншотов по id фильма
-    func getScreenshots(_ filmId: Int) {
+    func getScreenshots(_ filmId: Int, completition: @escaping (Error?) -> Void) {
         //общая часть url запроса
         let assetAdress: String = "https://api.themoviedb.org/3/movie/"
         //полный url с проверкой состояния
@@ -74,10 +78,17 @@ class URLService {
             guard let unwrData = data,
                   (response as? HTTPURLResponse)?.statusCode == 200,
                   error == nil else {
+                completition(error)
                 return
             }
             //отправка данных в парсер для сохранения линков в конкретный фильм в базе данных
-            self.parser.parseLinkToScreenshots(parseData: unwrData, parseError: error, id: filmId)
+            self.parser.parseLinkToScreenshots(parseData: unwrData, parseError: error, id: filmId, completition: { error in
+                if let error = error {
+                    completition(error)
+                } else {
+                    completition(nil)
+                }
+            })
             
         }
         task.resume()

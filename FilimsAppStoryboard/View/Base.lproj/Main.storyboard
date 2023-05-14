@@ -320,7 +320,9 @@
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="tkw-pS-fng" secondAttribute="trailing" constant="297" id="SQ5-Jd-XOo"/>
                             <constraint firstItem="U2w-nR-VBJ" firstAttribute="top" secondItem="Q4h-Je-4lT" secondAttribute="bottom" constant="14" id="SsI-qN-dXm"/>
                             <constraint firstItem="tkw-pS-fng" firstAttribute="top" secondItem="l5Z-Nt-51F" secondAttribute="bottom" constant="16" id="UfX-np-oIb"/>
+                            <constraint firstItem="tkw-pS-fng" firstAttribute="leading" secondItem="X9C-fR-UBn" secondAttribute="leading" constant="20" id="V05-cN-c2g"/>
                             <constraint firstItem="Gb0-an-KSw" firstAttribute="top" secondItem="Q4h-Je-4lT" secondAttribute="bottom" constant="56" id="asL-iM-Xig"/>
+                            <constraint firstItem="U2w-nR-VBJ" firstAttribute="leading" secondItem="X9C-fR-UBn" secondAttribute="leading" constant="20" id="cXV-aa-nGz"/>
                             <constraint firstItem="Gb0-an-KSw" firstAttribute="trailing" secondItem="X9C-fR-UBn" secondAttribute="trailing" id="fT3-Tq-aRN"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="l5Z-Nt-51F" secondAttribute="trailing" id="gjj-FH-nhD"/>
                             <constraint firstItem="X9C-fR-UBn" firstAttribute="trailing" secondItem="Q4h-Je-4lT" secondAttribute="trailing" id="ibr-Zw-mFo"/>

@@ -94,16 +94,33 @@ class Model {
         
     }
     
-    //метод получения линка скриншотов и сохранения их в базу данных общего списка
-    func screenshotsLink(){
-        //проверка на наличие доступа к базе
-        guard let filmObjects = filmObjects else {return}
-        
-        //отработка проверки по каждому фильму
-        for i in filmObjects {
-            //запрос на менеджер работы с апи
-            urlService.getScreenshots(i.id)
-        }
+//    //метод получения линка скриншотов и сохранения их в базу данных общего списка
+//    func screenshotsLink(){
+//        //проверка на наличие доступа к базе
+//        guard let filmObjects = filmObjects else {return}
+//
+//        //отработка проверки по каждому фильму
+//        for i in filmObjects {
+//            //запрос на менеджер работы с апи
+//            urlService.getScreenshots(i.id, completition: {error in
+//                if let error = error {
+//                    print("++ urlService.getScreenshots error")
+//                } else {
+//
+//                }
+//            })
+//        }
+//    }
+    
+    func personalScrenshots(id: Int, completition: @escaping (Bool) -> ()) {
+        urlService.getScreenshots(id, completition: {error in
+            if let error = error {
+                completition(false)
+                print("++ urlService.personalScrenshots error - \(error)")
+            } else {
+                completition(true)
+            }
+        })
     }
     
     //метод сортировки по типу
@@ -116,7 +133,8 @@ class Model {
     
     //метод сортировки по рейтингу
     func ratingSort() {
-        
+        //выгрузка линка базы для открытия его локально
+        print("++ realm data base url - \(String(describing: realm?.configuration.fileURL))")
         //этот же массив сортируем по рейтингу согласно булевой переменной sortAscending
         arrayHelper = arrayHelper?.sorted(byKeyPath: "filmRating", ascending: sortAscending)
     }

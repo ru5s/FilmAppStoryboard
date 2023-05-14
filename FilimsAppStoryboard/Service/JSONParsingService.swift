@@ -14,7 +14,7 @@ class JSONParsingService {
     let realm = try? Realm()
     
     //метод получения линков скриншотов в конкретный фильм
-    func parseLinkToScreenshots(parseData: Data, parseError: Error?, id: Int) {
+    func parseLinkToScreenshots(parseData: Data, parseError: Error?, id: Int, completition: @escaping (Error?) -> Void) {
         //запрос на попытку исполнения кода с выкидыванием ошибки в случае неудачи
         do {
             //декодирование данных json
@@ -53,9 +53,10 @@ class JSONParsingService {
                 }
                 
             })
+            completition(nil)
         //выдать ошибку в случае провала
         } catch let error {
-            
+            completition(error)
             print("++ parseLinkToScreenshots error - \(error)")
             
         }
