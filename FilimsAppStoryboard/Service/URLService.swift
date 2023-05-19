@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CryptoKit
 
 //все возможные варинаты запроса в апи (в приложении используется только 3)
 enum RequestOptions: String {
@@ -49,6 +50,8 @@ class URLService {
                 return
             }
             print("++ data - \(unwrData.count)")
+            let sh256 = SHA256.hash(data: unwrData)
+            print("++ hashValue - \(sh256)")
             
             DispatchQueue.main.async {
                 //отправка данных в парсер с сохранением всего в базу данных и получение ответа при достижении результата
